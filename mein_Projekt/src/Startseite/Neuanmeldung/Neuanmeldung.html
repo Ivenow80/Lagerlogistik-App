@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neuanmeldung - Sicherheits-App</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script> <!-- QR-Code-Erstellung -->
+</head>
+
+<body>
+    <div class="app-container">
+        <h1>Neuanmeldung</h1>
+        
+        <!-- Anmeldeformular -->
+        <form id="registration-form">
+            <label for="vorname">Vorname:</label>
+            <input type="text" id="vorname" name="vorname" required>
+            <br><br>
+            <label for="nachname">Nachname:</label>
+            <input type="text" id="nachname" name="nachname" required>
+            <br><br>
+            <label for="personalnummer">Personalnummer:</label>
+            <input type="text" id="personalnummer" name="personalnummer" required>
+            <br><br>
+            <button type="button" onclick="generateEmployeeQRCode()">QR-Code erstellen</button>
+        </form>
+
+        <!-- QR-Code Anzeige -->
+        <div id="qr-code-container">
+            <h3>Ihr QR-Code:</h3>
+            <canvas id="qr-code"></canvas>
+        </div>
+        
+        <p id="status-message"></p>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+</html>
