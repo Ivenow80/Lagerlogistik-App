@@ -4,12 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Neuanmeldung - Sicherheits-App</title>
-    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="Neuanmeldung.css">
     <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script> <!-- QR-Code-Erstellung -->
 </head>
 
 <body>
     <div class="app-container">
+        <!-- Firmenlogo -->
+        <div class="firmen-logo">
+            <!-- Hier wird das Firmenlogo eingebunden -->
+            <img src="logo_neu.png" alt="Firmenlogo" style="width: 100px; height: auto;" />
+        </div>
+        
         <h1>Neuanmeldung</h1>
         
         <!-- Anmeldeformular -->
@@ -27,13 +33,54 @@
         </form>
 
         <!-- QR-Code Anzeige -->
-        <div id="qr-code-container">
+        <div id="qr-code-container">  
             <h3>Ihr QR-Code:</h3>
             <canvas id="qr-code"></canvas>
         </div>
         
         <p id="status-message"></p>
     </div>
+
+    <script>
+        function generateEmployeeQRCode() {
+            // Hole die Eingabewerte
+            const vorname = document.getElementById('vorname').value.trim();
+            const nachname = document.getElementById('nachname').value.trim();
+            const personalnummer = document.getElementById('personalnummer').value.trim();
+            const statusMessage = document.getElementById('status-message');
+            const qrCodeContainer = document.getElementById('qr-code');
+
+            // Überprüfen, ob alle Felder ausgefüllt sind
+            if (!vorname || !nachname || !personalnummer) {
+                statusMessage.textContent = 'Bitte füllen Sie alle Felder aus, um den QR-Code zu erstellen.';
+                return;
+            }
+
+            // Erstellen der Mitarbeiter-ID für den QR-Code-Inhalt
+            const employeeID = `Mitarbeiter: ${vorname} ${nachname}, Personalnummer: ${personalnummer}`;
+
+            // Leere den QR-Code-Container
+            qrCodeContainer.innerHTML = '';
+
+            // QR-Code erstellen
+            QRCode.toCanvas(qrCodeContainer, employeeID, {
+                width: 200,
+                margin: 2,
+                color: {
+                    dark: "#000000",  // QR-Code-Farbe (schwarz)
+                    light: "#f9f9f9"  // Hintergrundfarbe (hellgrau)
+                }
+            }, function (error) {
+                if (error) {
+                    console.error("Fehler beim Erstellen des QR-Codes:", error);
+                    statusMessage.textContent = "Fehler beim Erstellen des QR-Codes.";
+                } else {
+                    statusMessage.textContent = "QR-Code erfolgreich erstellt!";
+                    console.log("QR-Code erfolgreich erstellt:", employeeID);
+                }
+            });
+        }
+    </script>
 
     <script src="index.js"></script>
 </body>

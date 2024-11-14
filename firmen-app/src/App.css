@@ -1,36 +1,28 @@
-.App {
-  /* Zentriert den Text innerhalb der App-Komponente */
+.app-container {
   text-align: center;
-}
-
-.App-header {
-  /* Hintergrundfarbe des Header-Bereichs */
-  background-color: #282c34;
-
-  /* Setzt die minimale Höhe auf 100% der Ansichtshöhe (full-screen) */
-  min-height: 100vh;
-
-  /* Verwendet Flexbox, um den Inhalt vertikal und horizontal zu zentrieren */
-  display: flex;
-  flex-direction: column; /* Anordnung der Elemente in einer Spalte */
-  justify-content: center; /* Zentriert den Inhalt vertikal */
-  align-items: center; /* Zentriert den Inhalt horizontal */
-
-  /* Setzt die Textfarbe auf weiß */
-  color: white;
+  padding: 20px;
 }
 
 .firmen-logo img {
-  /* Fügt einen Abstand um das Firmenlogo hinzu */
   margin: 20px;
 }
 
 .mitarbeiter-info {
-  /* Fügt einen Abstand ober- und unterhalb der Mitarbeiterinformationen hinzu */
   margin: 20px 0;
 }
 
-.qr-code {
-  /* Fügt einen Abstand oben für den QR-Code-Bereich hinzu */
+#qr-code-container {
   margin-top: 20px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
 }

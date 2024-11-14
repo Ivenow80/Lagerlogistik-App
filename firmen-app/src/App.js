@@ -7,9 +7,9 @@ const FIRMA_LOGO = 'logo_neu.png';  // Achte darauf, dass sich das Bild im 'publ
 
 function App() {
   // Mitarbeiterdaten können nun über den State dynamisch geändert werden
-  const [personalnummer, setPersonalnummer] = useState('123456789');
-  const [vorname, setVorname] = useState('Max');
-  const [nachname, setNachname] = useState('Mustermann');
+  const [personalnummer, setPersonalnummer] = useState('');
+  const [vorname, setVorname] = useState('');
+  const [nachname, setNachname] = useState('');
 
   // Erstellen eines Datenstrings für den QR-Code (Personalnummer, Vorname, Nachname)
   const mitarbeiterDaten = { personalnummer, vorname, nachname };
@@ -32,19 +32,18 @@ function App() {
       <header className="App-header">
         <h1>Firmen App</h1>
 
-        {/* Firmenlogo anzeigen */}
+
         <div className="firmen-logo">
-          <img src={FIRMA_LOGO} alt="Firmenlogo" style={{ width: 100, height: 100 }} />
+          <img src={FIRMA_LOGO} alt="Firmenlogo" style={{ width: 250, height: 250 }} />
         </div>
 
-        {/* Mitarbeiterinformationen anzeigen */}
         <div className="mitarbeiter-info">
           <h2>Mitarbeiterinformationen</h2>
           <p><strong>Personalnummer:</strong> {personalnummer}</p>
           <p><strong>Name:</strong> {vorname} {nachname}</p>
         </div>
 
-        {/* Optional: Eingabefelder zur Bearbeitung der Mitarbeiterdaten */}
+
         <div className="input-fields">
           <label>
             Personalnummer:
@@ -77,10 +76,10 @@ function App() {
           </label>
         </div>
 
-        {/* QR-Code anzeigen */}
+
         <div className="qr-code">
           <h3>QR-Code für die Mitarbeiterdaten</h3>
-          {/* QR-Code anzeigen mit QRCodeCanvas */}
+      
           <QRCodeCanvas value={qrData} size={256} />
         </div>
       </header>

@@ -25,7 +25,7 @@ function App() {
 
         {/* Firmenlogo anzeigen */}
         <div className="firmen-logo">
-          <img src={FIRMA_LOGO} alt="Firmenlogo" style={{ width: 100, height: 100 }} />
+          <img src={FIRMA_LOGO} alt="Firmenlogo" style={{ width: 250, height: 250 }} />
         </div>
 
         {/* Mitarbeiterinformationen anzeigen */}
@@ -35,7 +35,6 @@ function App() {
           <p><strong>Name:</strong> {vorname} {nachname}</p>
         </div>
 
-        {/* QR-Code anzeigen */}
         <div className="qr-code">
           <h3>QR-Code für die Mitarbeiterdaten</h3>
           {/* Hier wird der QR-Code mit QRCodeCanvas generiert */}
