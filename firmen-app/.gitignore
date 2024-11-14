@@ -1,0 +1,46 @@
+# Node Modules
+node_modules/
+
+# Log-Dateien
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build-Ordner
+build/
+
+# Verzeichnisse für temporäre Dateien
+.DS_Store
+Thumbs.db
+
+# Umgebungsdateien
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Paket-Manager-spezifische Dateien
+package-lock.json
+yarn.lock
+
+# IDE spezifische Dateien
+.vscode/
+.idea/
+
+# npm's optional package-lock.json für Entwickler
+package-lock.json
+
+# macOS spezifische Dateien
+*.swp
+*~
+
+# Verzeichnisse und Dateien für das Deployment (z.B. bei Servern)
+dist/
+
+# Test-Berichte und Coverage
+coverage/
+
+# Log- und Crash-Dateien
+*.log
+
