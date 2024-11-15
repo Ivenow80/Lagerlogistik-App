@@ -3,93 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sicherheits-App - Login</title>
-    <link rel="stylesheet" href="Startseite.css">
-    <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script> <!-- QR-Code-Erstellung -->
-    <script src="https://unpkg.com/html5-qrcode/minified/html5-qrcode.min.js"></script> <!-- QR-Code-Scanner -->
+    <title>Passwort-Management</title>
+    <link rel="stylesheet" href="../Neuanmeldung/Neuanmeldung.css"> <!-- Optional, falls CSS benötigt wird -->
 </head>
-
 <body>
     <div class="app-container">
-        <h1>Sicherheits-App</h1>
+        <!-- Firmenlogo -->
+        <div class="logo_neu">
+            <img src="../Logo/logo_neu.png" alt="Firmenlogo" />
+        </div>
 
-        <!-- Login-Formular -->
-        <form id="login-form" onsubmit="return handleLogin(event)">
-            <label for="username">Mitarbeiter/Vor-.Nachname:</label>
-            <input type="text" id="username" name="username" required>
-            <br><br>
-            <label for="personalnummer">Personalnummer:</label>
-            <input type="text" id="personalnummer" name="personalnummer" required>
-            <br><br>
-            <label for="password">Passwort:</label>
-            <input type="password" id="password" name="password" required>
-            <br><br>
-            <input type="submit" value="Login">
+        <h2>Anmelde Sicherheitsapp</h2>
+
+        <form id="registration-form" onsubmit="return handleLogin(event)">
+        <label for="otp-username">Mitarbeiter/Vor- und Nachname:</label>
+        <input type="text" id="otp-username" name="otp-username" required>
+        <br><br>
+
+        <label for="otp-personalnummer">Personalnummer:</label>
+        <input type="text" id="otp-personalnummer" name="otp-personalnummer" required>
+        <br><br>
+
+        <label for="otp-password">Passwort:</label>
+        <input type="password" id="otp-password" name="otp-password" required>
+        <br><br>
+        <input type="submit" value="Login">
         </form>
 
-        <!-- Login-Code Generierung -->
-        <div id="generated-login-code-container">
-            <p>Ihr Login-Code:</p>
-            <p id="generated-login-code"></p>
-            <button onclick="generateLoginCode()">Neuen Code generieren</button>
+        <!-- Button zur Erstanmeldung -->
+        <button id="erstanmeldung-button">Einmaliges Passwort generieren</button>
+        <div id="generated-password" style="display: none;">
+            <p id="otp-display"></p>
         </div>
 
-        <!-- Möglichkeit zur Erstanmeldung und Passwort-Erstellung -->
-        <div id="erstanmeldung-container">
-            <p>Erstanmeldung und Passwort erstellen:</p>
-            <button id="erstanmeldung-button" onclick="generateAndShowPassword()">Passwort erstellen</button>
-        </div>
-
-        <!-- Passwort erstellen Formular (versteckt standardmäßig) -->
-        <div id="password-creation-form" style="display: none;">
-            <form action="/create-password" method="post">
-                <label for="new-password">Neues Passwort:</label>
-                <input type="password" id="new-password" name="new-password" required>
-                <br><br>
-                <label for="confirm-password">Passwort bestätigen:</label>
-                <input type="password" id="confirm-password" name="confirm-password" required>
-                <br><br>
-                <input type="submit" value="Passwort erstellen">
-            </form>
-        </div>
-
-        <!-- Passwort anzeigen Bereich -->
-        <div id="passwort-display" style="display:none;">
-            <h2>Ihr erstelltes Passwort:</h2>
-            <p id="display-password"></p>
-            <button id="show-password-btn" onclick="togglePasswordVisibility()">Passwort anzeigen</button>
-        </div>
-
-        <!-- QR-Code Erzeugung und Scan-Bereich -->
-        <p>QR-Code für Personalnummer:</p>
-        <button onclick="generateQRCode()">QR-Code anzeigen</button>
-        <div id="qr-code"></div>
-        <p>QR-Code scan:</p>
-        <div id="qr-reader" style="width: 300px"></div>
-        <p id="login-status"></p>
-
-        <!-- Eingabe der Personalnummer und Name für das einmalige Passwort -->
-        <div id="otp-container">
-            <label for="otp-username">Mitarbeiter/Vor-.Nachname:</label>
-            <input type="text" id="otp-username" name="otp-username" required>
+      <!-- Passwort erstellen Formular (versteckt standardmäßig) -->
+      <div id="password-creation-form">
+        <form action="/create-password" method="post">
+            <label for="new-password">Neues Passwort:</label>
+            <input type="password" id="new-password" name="new-password" required>
             <br><br>
-            <label for="otp-personalnummer">Personalnummer:</label>
-            <input type="text" id="otp-personalnummer" name="otp-personalnummer" required>
+            <label for="confirm-password">Passwort bestätigen:</label>
+            <input type="password" id="confirm-password" name="confirm-password" required>
             <br><br>
+            <input type="submit" value="Passwort erstellen">
+        </form>
+    </div>
 
-            <!-- Button zum Generieren des einmaligen Passworts -->
-            <button id="generate-otp-button" onclick="generateOneTimePassword()">Einmalpasswort generieren</button>
-
-            <!-- Bereich zur Anzeige des generierten Passworts -->
-            <div id="generated-password" style="display:none;">
-                <h2>Ihr einmaliges Passwort:</h2>
-                <p id="otp-display"></p>
-                <button id="show-password-btn" onclick="togglePasswordVisibility()">Passwort anzeigen</button>
-            </div>
+        <!-- Bereich für benutzerdefiniertes Passwort -->
+        <label for="custom-password-input">Eigenes Passwort eingeben:</label>
+        <input type="text" id="custom-password-input" placeholder="Geben Sie Ihr Passwort ein">
+        <button id="custom-password-btn">Eigenes Passwort speichern</button>
+        <div id="custom-password-container" style="display: none;">
+            <p id="custom-password-display"></p>
         </div>
     </div>
 
-    <!-- Einbindung der externen JavaScript-Datei -->
-    <script src="StartseiteQR.js"></script>
+    <script src="StartseiteQR.js"></script> <!-- Einbindung der JavaScript-Datei -->
 </body>
 </html>
