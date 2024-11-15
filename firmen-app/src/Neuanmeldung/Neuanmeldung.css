@@ -1,135 +1,118 @@
-
-
-/* Allgemeine Reset-Stile für den gesamten Browser */
-* {
+/* Allgemeine Stile für die Seite */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f9;
+  color: #333;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
-/* Body und HTML-Stile: Flexbox für Zentrierung */
-body {
-  height: auto;
-  font-family: Arial, sans-serif;
-  display: flex;
-  justify-content: center;   /* Zentriert horizontal */
-  align-items: center;       /* Zentriert vertikal */
-  background-color: #438f56; /* Hellgrauer Hintergrund */
-}
-
-/* Container für die gesamte App */
+/* Container für die App */
 .app-container {
-  text-align: center;
   width: 100%;
-  max-width: 600px;  /* Maximale Breite für das Layout */
-  background-color: #646347;
+  max-width: 600px;
+  margin: 50px auto;
   padding: 20px;
-  box-sizing: border-box;
-  border-radius: 30px;  /* Abgerundete Ecken */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Schattierung für den Container */
-}
-
-/* Logo-Styling */
-.logo_neu {
-  margin-top: 20px; /* Abstand nach oben */
-}
-
-.logo_neu img {
-  width: 250px;
-  height: auto;
-  margin-bottom: 20px;  /* Abstand zum folgenden Inhalt */
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
 }
 
 /* Überschrift */
 h1 {
-  font-size: 24px;
-  color: #cbc3c3;
+  color: #0056b3;
   margin-bottom: 20px;
-  
 }
 
-/* Formular */
+/* Formular-Stile */
 form {
   display: flex;
   flex-direction: column;
-  align-items: center;
   margin-bottom: 20px;
 }
 
 form label {
   font-size: 14px;
-  color: #d3bebe;
   margin-bottom: 5px;
-  text-align: center;
-  width: 100%;
-  max-width: 400px;  /* Maximaler Bereich für Eingabefelder */
 }
 
-form input {
-  width: 100%;
-  max-width: 400px;
+form input[type="text"] {
   padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid h#97a96b;
-  border-radius: 5px;
   font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 15px;
 }
 
-form button {
-  padding: 12px 20px;
-  background-color: #4CAF50;
+button {
+  padding: 10px 20px;
+  background-color: #28a745;
   color: white;
   border: none;
-  cursor: pointer;
   border-radius: 5px;
   font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
 }
 
-form button:hover {
-  background-color: #a38524;
+button:hover {
+  background-color: #218838;
 }
 
 /* QR-Code Container */
 #qr-code-container {
-  margin-top: 20px;
+  margin-top: 30px;
   padding: 20px;
-  background-color: #cd9254;
-  border: 1px solid #c78282;
-  border-radius: 25px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  max-width: 500px;
+  background-color: #c5be9b;
+  border: 1px solid #1e1313;
+  border-radius: 10px;
+  width: 50%;
+  max-width: 400px;
   margin-left: auto;
   margin-right: auto;
 }
 
-#qr-code-container h3 {
-  font-size: 18px;
-  color: #1e1c14;
-  margin-bottom: 20px;
+#qr-code-container canvas {
+  margin-top: 20px;
 }
 
-/* Statusnachricht */
+/* Status Nachricht */
 #status-message {
+  margin-top: 10px;
   font-size: 16px;
-  color: #444;
-  margin-top: 20px;
+  color: #555;
 }
 
 /* Button für "Bereits angemeldet" */
-button#status-button {
-  padding: 12px 20px;
-  background-color: #3be34f;
-  color: rgb(249, 246, 246);
+#status-button {
+  padding: 10px 20px;
+  background-color: #0056b3;
+  color: white;
   border: none;
-  cursor: pointer;
   border-radius: 5px;
-  margin-top: 20px;
   font-size: 16px;
+  cursor: pointer;
+  margin-top: 20px;
 }
 
-button#status-button:hover {
-  background-color:#a38524 ;
+#status-button:hover {
+  background-color: #004494;
+}
+
+/* Logo */
+.logo_neu img {
+  width: 200px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+/* QR-Code Bereich */
+#qr-code {
+  margin-top: 20px;
+  text-align: center;
 }

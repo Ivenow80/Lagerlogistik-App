@@ -12,10 +12,10 @@
 <body>
     <div class="app-container">
         <h1>Sicherheits-App</h1>
-        
-        <!-- Login Formular -->
-        <form id="login-form" action="/login" method="post">
-            <label for="username">Mitarbeiter:</label>
+
+        <!-- Login-Formular -->
+        <form id="login-form" onsubmit="return handleLogin(event)">
+            <label for="username">Mitarbeiter/Vor-.Nachname:</label>
             <input type="text" id="username" name="username" required>
             <br><br>
             <label for="personalnummer">Personalnummer:</label>
@@ -27,8 +27,38 @@
             <input type="submit" value="Login">
         </form>
 
-        <p>Noch kein Konto? <a href="../Neuanmeldung/neuanmeldung.html">Neuanmeldung</a></p>
-        <p>Passwort vergessen? <a href="/forgot-password">Passwort zurücksetzen</a></p>
+        <!-- Login-Code Generierung -->
+        <div id="generated-login-code-container">
+            <p>Ihr Login-Code:</p>
+            <p id="generated-login-code"></p>
+            <button onclick="generateLoginCode()">Neuen Code generieren</button>
+        </div>
+
+        <!-- Möglichkeit zur Erstanmeldung und Passwort-Erstellung -->
+        <div id="erstanmeldung-container">
+            <p>Erstanmeldung und Passwort erstellen:</p>
+            <button id="erstanmeldung-button" onclick="generateAndShowPassword()">Passwort erstellen</button>
+        </div>
+
+        <!-- Passwort erstellen Formular (versteckt standardmäßig) -->
+        <div id="password-creation-form" style="display: none;">
+            <form action="/create-password" method="post">
+                <label for="new-password">Neues Passwort:</label>
+                <input type="password" id="new-password" name="new-password" required>
+                <br><br>
+                <label for="confirm-password">Passwort bestätigen:</label>
+                <input type="password" id="confirm-password" name="confirm-password" required>
+                <br><br>
+                <input type="submit" value="Passwort erstellen">
+            </form>
+        </div>
+
+        <!-- Passwort anzeigen Bereich -->
+        <div id="passwort-display" style="display:none;">
+            <h2>Ihr erstelltes Passwort:</h2>
+            <p id="display-password"></p>
+            <button id="show-password-btn" onclick="togglePasswordVisibility()">Passwort anzeigen</button>
+        </div>
 
         <!-- QR-Code Erzeugung und Scan-Bereich -->
         <p>QR-Code für Personalnummer:</p>
@@ -37,8 +67,29 @@
         <p>QR-Code scan:</p>
         <div id="qr-reader" style="width: 300px"></div>
         <p id="login-status"></p>
+
+        <!-- Eingabe der Personalnummer und Name für das einmalige Passwort -->
+        <div id="otp-container">
+            <label for="otp-username">Mitarbeiter/Vor-.Nachname:</label>
+            <input type="text" id="otp-username" name="otp-username" required>
+            <br><br>
+            <label for="otp-personalnummer">Personalnummer:</label>
+            <input type="text" id="otp-personalnummer" name="otp-personalnummer" required>
+            <br><br>
+
+            <!-- Button zum Generieren des einmaligen Passworts -->
+            <button id="generate-otp-button" onclick="generateOneTimePassword()">Einmalpasswort generieren</button>
+
+            <!-- Bereich zur Anzeige des generierten Passworts -->
+            <div id="generated-password" style="display:none;">
+                <h2>Ihr einmaliges Passwort:</h2>
+                <p id="otp-display"></p>
+                <button id="show-password-btn" onclick="togglePasswordVisibility()">Passwort anzeigen</button>
+            </div>
+        </div>
     </div>
 
-    <script src="script.js"></script>
+    <!-- Einbindung der externen JavaScript-Datei -->
+    <script src="StartseiteQR.js"></script>
 </body>
 </html>
