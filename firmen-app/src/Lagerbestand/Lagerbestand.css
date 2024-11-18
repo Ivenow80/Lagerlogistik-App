@@ -1,143 +1,54 @@
-
-.tg {
+:root {
+    --primary-color: #b51c1c;   /* Rot */
+    --secondary-color: #32cb00; /* Grün */
+    --highlight-color: #3531FF; /* Blau */
+    --background-color: #f2f2f2;
+    --border-color: black;
+    --font-family: Arial, sans-serif;
+    --font-size: 14px;
+  }
+  
+  body {
+    font-family: var(--font-family);
+    background-color: var(--background-color);
+  }
+  
+  table {
     border-collapse: collapse;
-    border-spacing: 0;
-}
-.tg td {
-    border-color: black;
+    width: 100%;
+  }
+  
+  td, th {
+    border-color: var(--border-color);
     border-style: solid;
     border-width: 1px;
-    font-family: Arial, sans-serif;
-    font-size: 14px;
-    overflow: hidden;
+    font-size: var(--font-size);
     padding: 10px 8px;
-    word-break: normal;
-}
-.tg th {
-    border-color: black;
-    border-style: solid;
-    border-width: 1px;
-    font-family: Arial, sans-serif;
-    font-size: 14px;
+    text-align: left;
+  }
+  
+  th {
     font-weight: normal;
-    overflow: hidden;
-    padding: 10px 8px;
-    word-break: normal;
-}
-.tg .tg-zz2x {
-    background-color: #b51c1c;
-    border-color: inherit;
-    font-weight: bold;
-    text-align: left;
-    vertical-align: top;
-}
-.tg .tg-dxqr {
-    border-color: inherit;
-    color: #fe0000;
-    text-align: center;
-    vertical-align: top;
-}
-.tg .tg-0r18 {
-    border-color: inherit;
+  }
+  
+  .tg-zz2x { background-color: var(--primary-color); color: white; font-weight: bold; }
+  .tg-dxqr { color: var(--primary-color); text-align: center; }
+  .tg-0r18, .tg-p1nr { text-align: center; }
+  .tg-u3ks { background-color: var(--secondary-color); font-weight: bold; color: white; }
+  .tg-fymr { font-weight: bold; color: var(--highlight-color); }
+  
+  .login-btn {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
     font-size: 14px;
-    text-align: center;
-    vertical-align: top;
-}
-.tg .tg-doeh {
-    border-color: inherit;
-    font-size: 10px;
-    font-weight: bold;
-    text-align: center;
-    vertical-align: top;
-}
-.tg .tg-dxle {
-    border-color: inherit;
-    color: #32cb00;
-    text-align: center;
-    vertical-align: top;
-}
-.tg .tg-p1nr {
-    border-color: inherit;
-    font-size: 11px;
-    text-align: left;
-    vertical-align: top;
-}
-.tg .tg-lm6i {
-    border-color: inherit;
-    font-size: 11px;
-    font-weight: bold;
-    text-align: center;
-    vertical-align: top;
-}
-.tg .tg-c3ow {
-    border-color: inherit;
-    text-align: center;
-    vertical-align: top;
-}
-.tg .tg-3kwv {
-    border-color: inherit;
-    font-family: "Comic Sans MS", cursive, sans-serif !important;
-    font-size: 11px;
-    font-weight: bold;
-    text-align: left;
-    vertical-align: top;
-}
-.tg .tg-l6li {
-    border-color: inherit;
-    font-size: 10px;
-    text-align: left;
-    vertical-align: top;
-}
-.tg .tg-0p48 {
-    border-color: inherit;
-    font-size: 11px;
-    font-weight: bold;
-    text-align: left;
-    vertical-align: top;
-}
-.tg .tg-4k6h {
-    border-color: inherit;
-    font-size: 10px;
-    font-weight: bold;
-    text-align: left;
-    vertical-align: top;
-}
-.tg .tg-fymr {
-    border-color: inherit;
-    font-weight: bold;
-    text-align: left;
-    vertical-align: top;
-}
-.tg .tg-0pky {
-    border-color: inherit;
-    text-align: left;
-    vertical-align: top;
-}
-.tg .tg-u3ks {
-    background-color: #34ff34;
-    border-color: inherit;
-    font-weight: bold;
-    text-align: left;
-    vertical-align: top;
-}
-.tg .tg-20mg {
-    background-color: #ffc702;
-    border-color: inherit;
-    font-weight: bold;
-    text-align: left;
-    vertical-align: top;
-}
-.tg .tg-73a0 {
-    border-color: inherit;
-    font-size: 12px;
-    text-align: left;
-    vertical-align: top;
-}
-.tg .tg-zd5i {
-    border-color: inherit;
-    font-size: 14px;
-    text-align: left;
-    vertical-align: top;
-}
-
+    border-radius: 5px;
+    transition: background-color 0.3s;
+  }
+  
+  .login-btn:hover {
+    background-color: darkred;
+  }
   

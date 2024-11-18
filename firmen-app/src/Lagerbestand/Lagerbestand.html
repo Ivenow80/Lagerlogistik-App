@@ -1,78 +1,42 @@
-<style type="text/css">
-    .tg  {border-collapse:collapse;border-spacing:0;}
-    .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-      overflow:hidden;padding:10px 8px;word-break:normal;}
-    .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-      font-weight:normal;overflow:hidden;padding:10px 8px;word-break:normal;}
-    .tg .tg-zz2x{background-color:#b51c1c;border-color:inherit;font-weight:bold;text-align:left;vertical-align:top}
-    .tg .tg-dxqr{border-color:inherit;color:#fe0000;text-align:center;vertical-align:top}
-    .tg .tg-0r18{border-color:inherit;font-size:14px;text-align:center;vertical-align:top}
-    .tg .tg-doeh{border-color:inherit;font-size:10px;font-weight:bold;text-align:center;vertical-align:top}
-    .tg .tg-dxle{border-color:inherit;color:#32cb00;text-align:center;vertical-align:top}
-    .tg .tg-p1nr{border-color:inherit;font-size:11px;text-align:left;vertical-align:top}
-    .tg .tg-lm6i{border-color:inherit;font-size:11px;font-weight:bold;text-align:center;vertical-align:top}
-    .tg .tg-c3ow{border-color:inherit;text-align:center;vertical-align:top}
-    .tg .tg-3kwv{border-color:inherit;font-family:"Comic Sans MS", cursive, sans-serif !important;font-size:11px;font-weight:bold;
-      text-align:left;vertical-align:top}
-    .tg .tg-l6li{border-color:inherit;font-size:10px;text-align:left;vertical-align:top}
-    .tg .tg-0p48{border-color:inherit;font-size:11px;font-weight:bold;text-align:left;vertical-align:top}
-    .tg .tg-4k6h{border-color:inherit;font-size:10px;font-weight:bold;text-align:left;vertical-align:top}
-    .tg .tg-fymr{border-color:inherit;font-weight:bold;text-align:left;vertical-align:top}
-    .tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
-    .tg .tg-u3ks{background-color:#34ff34;border-color:inherit;font-weight:bold;text-align:left;vertical-align:top}
-    .tg .tg-20mg{background-color:#ffc702;border-color:inherit;font-weight:bold;text-align:left;vertical-align:top}
-    .tg .tg-73a0{border-color:inherit;font-size:12px;text-align:left;vertical-align:top}
-    .tg .tg-zd5i{border-color:inherit;font-size:14px;text-align:left;vertical-align:top}
-    </style>
-    <table class="tg" style="undefined;table-layout: fixed; width: 1552px"><colgroup>
-    <col style="width: 34px">
-    <col style="width: 102px">
-    <col style="width: 151px">
-    <col style="width: 50px">
-    <col style="width: 86px">
-    <col style="width: 108px">
-    <col style="width: 70px">
-    <col style="width: 75px">
-    <col style="width: 58px">
-    <col style="width: 59px">
-    <col style="width: 77px">
-    <col style="width: 59px">
-    <col style="width: 68px">
-    <col style="width: 59px">
-    <col style="width: 122px">
-    <col style="width: 57px">
-    <col style="width: 74px">
-    <col style="width: 67px">
-    <col style="width: 74px">
-    <col style="width: 102px">
-    </colgroup>
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bestellübersicht</title>
+  <link rel="stylesheet" href="Lagerbestand.css">
+</head>
+<body>
+  <button class="login" onclick="login()">Login</button>
+
+  <table class="tg">
     <thead>
       <tr>
         <th class="tg-3kwv">Pos</th>
-        <th class="tg-p1nr"><span style="font-weight:bold">Artikel-Nr.</span></th>
+        <th class="tg-p1nr"><strong>Artikel-Nr.</strong></th>
         <th class="tg-0p48">Bezeichnung</th>
         <th class="tg-0p48">Lager</th>
         <th class="tg-0p48">Lagerplatz</th>
         <th class="tg-0p48">Lagerbestand</th>
         <th class="tg-4k6h">Waren- Entnahme<br>[-]</th>
         <th class="tg-4k6h">Ware<br>hinzugefügt<br>[+]</th>
-        <th class="tg-p1nr"><span style="font-weight:bold">Einheit</span><br><span style="font-weight:bold">[Sack,</span><br><span style="font-weight:bold">Big.]</span></th>
+        <th class="tg-p1nr"><strong>Einheit</strong><br><strong>[Sack,</strong><br><strong>Big.]</strong></th>
         <th class="tg-0p48">Preis pro Einheit<br>[€]</th>
         <th class="tg-0p48">Wert Lager-bestand</th>
         <th class="tg-0p48">Mindest-menge</th>
-        <th class="tg-0p48"><span style="font-weight:bold">nach-bestellen</span><br></th>
+        <th class="tg-0p48"><strong>nach-bestellen</strong><br></th>
         <th class="tg-4k6h">min Bestell-menge</th>
         <th class="tg-lm6i">Lieferant</th>
         <th class="tg-doeh">Bestell-menge</th>
         <th class="tg-doeh">nachbestellt am</th>
         <th class="tg-4k6h">Lieferzeit<br>[Tage]</th>
-        <th class="tg-l6li"><span style="font-weight:bold">Mitarbeiter</span><br></th>
-        <th class="tg-l6li"><span style="font-weight:bold">Personalnummer</span></th>
+        <th class="tg-l6li"><strong>Mitarbeiter</strong><br></th>
+        <th class="tg-l6li"><strong>Personalnummer</strong></th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td class="tg-fymr">1</td>
+        <td class="tg-fymr" contenteditable="true">1</td>
         <td class="tg-0pky">458.555.45</td>
         <td class="tg-0pky">Torf 45l</td>
         <td class="tg-0pky">A04</td>
@@ -93,290 +57,14 @@
         <td class="tg-l6li">Paul,Meyer</td>
         <td class="tg-0pky">237889</td>
       </tr>
-      <tr>
-        <td class="tg-fymr">2</td>
-        <td class="tg-0pky">458.555.01</td>
-        <td class="tg-0pky">Blumenerde Bio<br>70l</td>
-        <td class="tg-0pky">A16</td>
-        <td class="tg-c3ow">17</td>
-        <td class="tg-0r18">156</td>
-        <td class="tg-c3ow"><span style="color:#C63030">0</span><br></td>
-        <td class="tg-dxle">14</td>
-        <td class="tg-0pky">Sack</td>
-        <td class="tg-fymr"><span style="color:#3531FF">12,45€</span><br></td>
-        <td class="tg-0pky">2116,5€</td>
-        <td class="tg-0pky">12</td>
-        <td class="tg-u3ks"></td>
-        <td class="tg-0pky">12</td>
-        <td class="tg-0pky">Blumenglück</td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-l6li">Egon Prim</td>
-        <td class="tg-0pky">254685</td>
-      </tr>
-      <tr>
-        <td class="tg-fymr">3</td>
-        <td class="tg-0pky">458.555.04</td>
-        <td class="tg-0pky">Blumentorf Big pack</td>
-        <td class="tg-0pky">A01</td>
-        <td class="tg-c3ow">12</td>
-        <td class="tg-0r18">1568</td>
-        <td class="tg-c3ow"><span style="color:#A03030">0</span></td>
-        <td class="tg-dxle">0</td>
-        <td class="tg-0pky">BP</td>
-        <td class="tg-fymr"><span style="color:#3531FF">56,00€</span><br></td>
-        <td class="tg-0pky">87808€</td>
-        <td class="tg-0pky">25</td>
-        <td class="tg-20mg"></td>
-        <td class="tg-0pky">12</td>
-        <td class="tg-73a0">Blumenerdenwerk</td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-l6li">Leon Blank</td>
-        <td class="tg-0pky">1254589</td>
-      </tr>
-      <tr>
-        <td class="tg-fymr">4</td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-zd5i"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-fymr"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-fymr"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-      </tr>
-      <tr>
-        <td class="tg-fymr">5</td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-zd5i"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-fymr"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-fymr"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-      </tr>
-      <tr>
-        <td class="tg-fymr">6</td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-zd5i"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-fymr"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-fymr"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-      </tr>
-      <tr>
-        <td class="tg-fymr">7</td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-zd5i"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-fymr"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-fymr"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-      </tr>
-      <tr>
-        <td class="tg-fymr">8</td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-zd5i"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-fymr"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-fymr"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-      </tr>
-      <tr>
-        <td class="tg-fymr">9</td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-zd5i"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-fymr"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-fymr"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-      </tr>
-      <tr>
-        <td class="tg-fymr">10</td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-zd5i"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-fymr"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-fymr"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-      </tr>
-      <tr>
-        <td class="tg-fymr">11</td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-zd5i"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-fymr"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-fymr"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-      </tr>
-      <tr>
-        <td class="tg-fymr">12</td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-zd5i"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-fymr"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-fymr"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-      </tr>
-      <tr>
-        <td class="tg-fymr">13</td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-zd5i"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-fymr"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-fymr"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-      </tr>
-      <tr>
-        <td class="tg-fymr">14</td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-zd5i"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-fymr"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-fymr"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-        <td class="tg-0pky"></td>
-      </tr>
-    </tbody></table>
+      <!-- Weitere Zeilen können hier hinzugefügt werden -->
+    </tbody>
+  </table>
+
+  <script>
+    function login() {
+      alert("Login Funktion hier!");
+    }
+  </script>
+</body>
+</html>

@@ -1,78 +1,52 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const buttons = {
-        erstanmeldung: document.getElementById('erstanmeldung-button'),
-        newPassword: document.getElementById('create-new-password-btn'),
-        customPassword: document.getElementById('custom-password-btn')
-    };
-
-
-    buttons.erstanmeldung?.addEventListener('click', generateAndShowPassword);
-    buttons.newPassword?.addEventListener('click', createNewPassword);
-    buttons.customPassword?.addEventListener('click', createCustomPassword);
-});
-
-
-// Funktion zur Generierung eines Passworts
-function generatePassword(length = 12) {
-    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_-+=';
-    let result = '';
-
-
-    for (let i = 0; i < length; i++) {
-        const randomIndex = Math.floor(Math.random() * chars.length);
-        result += chars[randomIndex];
-    }
-    return result;
+// Funktion zum Generieren eines Einmalpassworts
+function generateOneTimePassword() {
+    // Generiert ein zufälliges Einmalpasswort
+    const otp = Math.random().toString(36).slice(-8); // Einfach generiertes Passwort
+    document.getElementById('otp-display').innerText = `Ihr Einmal-Passwort: ${otp}`;
+    document.getElementById('generated-password').style.display = 'block';
 }
 
-
-// Funktion zur Anzeige eines generierten Passworts
-function generateAndShowPassword() {
-    const password = generatePassword();
-    displayPassword('otp-display', password, 'generated-password');
-}
-
-
-// Login-Handling (Beispiel)
+// Funktion zur Handhabung der Login-Eingabe
 function handleLogin(event) {
     event.preventDefault();
-
-
-    const username = document.getElementById('otp-username').value;
-    const personalnummer = document.getElementById('otp-personalnummer').value;
-    const password = document.getElementById('otp-password').value;
-
-
-    console.log("Login Info:", username, personalnummer, password);
-    // Hier können Sie die Login-Logik hinzufügen (z. B. mit einer API)
-    alert("Login erfolgreich!");
-}
-
-
-// Funktion zur Erstellung eines neuen Passworts
-function createNewPassword() {
-    const password = generatePassword();
-    displayPassword('new-password-display', `Neues Passwort: ${password}`, 'new-password-container');
-}
-
-
-// Funktion zur Anzeige eines benutzerdefinierten Passworts
-function createCustomPassword() {
-    const customPassword = document.getElementById('custom-password-input').value.trim();
-
-
-    if (customPassword.length >= 8) { // Mindestlänge von 8 Zeichen zur Sicherheit
-        displayPassword('custom-password-display', `Ihr eingegebenes Passwort: ${customPassword}`, 'custom-password-container');
+    const enteredPassword = document.getElementById('otp-password').value;
+    const displayedOtp = document.getElementById('otp-display').innerText.split(': ')[1];
+    
+    // Überprüft, ob das eingegebene Passwort dem Einmalpasswort entspricht
+    if (enteredPassword === displayedOtp) {
+        alert('Einmaliges Passwort korrekt. Bitte erstellen Sie ein neues Passwort.');
+        document.getElementById('password-creation-form').style.display = 'block';  // Zeigt das Formular zur Passworterstellung an
     } else {
-        alert('Bitte geben Sie ein Passwort mit mindestens 8 Zeichen ein!');
+        alert('Ungültiges Passwort. Bitte versuchen Sie es erneut.'); // Gibt eine Fehlermeldung aus, wenn das Passwort falsch ist
     }
 }
 
+// Funktion zum Speichern des neuen Passworts
+function saveNewPassword(event) {
+    event.preventDefault(); // Verhindert das Standardverhalten des Formulars
+    const newPassword = document.getElementById('new-password').value;
+    const confirmPassword = document.getElementById('confirm-password').value;
+    const personalNumber = document.getElementById('otp-personalnummer').value;
 
-// Hilfsfunktion zur Anzeige des Passworts
-function displayPassword(displayElementId, passwordText, containerElementId) {
-    document.getElementById(displayElementId).textContent = passwordText;
-    document.getElementById(containerElementId).style.display = 'block';
+    // Überprüft, ob die Passwörter übereinstimmen
+    if (newPassword !== confirmPassword) {
+        alert('Die Passwörter stimmen nicht überein. Bitte erneut eingeben.');
+        return;
+    }
+
+    // Beispielhafter Speichervorgang (hier könnte eine API verwendet werden, um das Passwort zu speichern)
+    console.log(`Passwort für Mitarbeiter mit Personalnummer ${personalNumber} gespeichert: ${newPassword}`);
+    alert('Neues Passwort erfolgreich gespeichert!');
+
+    // Weiterleitung zur Login-Seite
+    window.location.href = 'Loginseite.html'; // Leitet nach erfolgreicher Passwortspeicherung auf die Login-Seite weiter
 }
 
+// Event-Listener für das Formular zur Passworterstellung
+document.getElementById('create-password-form').addEventListener('submit', saveNewPassword);
 
+// Event-Listener für den Login-Formular
+document.getElementById('registration-form').addEventListener('submit', handleLogin);
+
+// Event-Listener für den Button zur OTP-Generierung
+document.getElementById('erstanmeldung-button').addEventListener('click', generateOneTimePassword);

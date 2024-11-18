@@ -16,48 +16,86 @@
         <h2>Anmelde Sicherheitsapp</h2>
 
         <form id="registration-form" onsubmit="return handleLogin(event)">
-        <label for="otp-username">Mitarbeiter/Vor- und Nachname:</label>
-        <input type="text" id="otp-username" name="otp-username" required>
-        <br><br>
+            <label for="otp-username">Mitarbeiter/Vor- und Nachname:</label>
+            <input type="text" id="otp-username" name="otp-username" required>
+            <br><br>
 
-        <label for="otp-personalnummer">Personalnummer:</label>
-        <input type="text" id="otp-personalnummer" name="otp-personalnummer" required>
-        <br><br>
+            <label for="otp-personalnummer">Personalnummer:</label>
+            <input type="text" id="otp-personalnummer" name="otp-personalnummer" required>
+            <br><br>
 
-        <label for="otp-password">Passwort:</label>
-        <input type="password" id="otp-password" name="otp-password" required>
-        <br><br>
-        <input type="submit" value="Login">
+            <label for="otp-password">Passwort:</label>
+            <input type="password" id="otp-password" name="otp-password" required>
+            <br><br>
+            <input type="submit" value="Login">
         </form>
 
         <!-- Button zur Erstanmeldung -->
-        <button id="erstanmeldung-button">Einmaliges Passwort generieren</button>
+        <button id="erstanmeldung-button" onclick="generateOneTimePassword()">Einmaliges Passwort generieren</button>
         <div id="generated-password" style="display: none;">
             <p id="otp-display"></p>
         </div>
 
-      <!-- Passwort erstellen Formular (versteckt standardmäßig) -->
-      <div id="password-creation-form">
-        <form action="/create-password" method="post">
-            <label for="new-password">Neues Passwort:</label>
-            <input type="password" id="new-password" name="new-password" required>
-            <br><br>
-            <label for="confirm-password">Passwort bestätigen:</label>
-            <input type="password" id="confirm-password" name="confirm-password" required>
-            <br><br>
-            <input type="submit" value="Passwort erstellen">
-        </form>
-    </div>
-
-        <!-- Bereich für benutzerdefiniertes Passwort -->
-        <label for="custom-password-input">Eigenes Passwort eingeben:</label>
-        <input type="text" id="custom-password-input" placeholder="Geben Sie Ihr Passwort ein">
-        <button id="custom-password-btn">Eigenes Passwort speichern</button>
-        <div id="custom-password-container" style="display: none;">
-            <p id="custom-password-display"></p>
+        <!-- Passwort erstellen Formular (versteckt standardmäßig) -->
+        <div id="password-creation-form" style="display: none;">
+            <h3>Bitte neues Passwort erstellen</h3>
+            <form id="create-password-form" onsubmit="return saveNewPassword(event)">
+                <label for="new-password">Neues Passwort:</label>
+                <input type="password" id="new-password" name="new-password" required>
+                <br><br>
+                <label for="confirm-password">Passwort bestätigen:</label>
+                <input type="password" id="confirm-password" name="confirm-password" required>
+                <br><br>
+                <input type="submit" value="Passwort erstellen">
+            </form>
         </div>
     </div>
 
-    <script src="StartseiteQR.js"></script> <!-- Einbindung der JavaScript-Datei -->
+    <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script> <!-- QR-Code Bibliothek -->
+    <script>
+        // Funktion zum Generieren eines Einmalpassworts
+        function generateOneTimePassword() {
+            const otp = Math.random().toString(36).slice(-8); // Einfach generiertes Passwort
+            document.getElementById('otp-display').innerText = `Ihr Einmal-Passwort: ${otp}`;
+            document.getElementById('generated-password').style.display = 'block';
+        }
+
+        // Funktion zur Handhabung der Login-Eingabe
+        function handleLogin(event) {
+            event.preventDefault();
+            const enteredPassword = document.getElementById('otp-password').value;
+            const displayedOtp = document.getElementById('otp-display').innerText.split(': ')[1];
+           
+            if (enteredPassword === displayedOtp) {
+                alert('Einmaliges Passwort korrekt. Bitte erstellen Sie ein neues Passwort.');
+                document.getElementById('password-creation-form').style.display = 'block';
+            } else {
+                alert('Ungültiges Passwort. Bitte versuchen Sie es erneut.');
+            }
+        }
+
+        // Funktion zum Speichern des neuen Passworts und Weiterleitung zur Login-Seite
+        function saveNewPassword(event) {
+            event.preventDefault();
+            const newPassword = document.getElementById('new-password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+            const personalNumber = document.getElementById('otp-personalnummer').value;
+
+            if (newPassword !== confirmPassword) {
+                alert('Die Passwörter stimmen nicht überein. Bitte erneut eingeben.');
+                return;
+            }
+
+            // Speichern der Personalnummer und des neuen Passworts im localStorage
+            localStorage.setItem('personalnummer', personalNumber);
+            localStorage.setItem('loginPassword', newPassword);
+
+            console.log(`Passwort für Mitarbeiter mit Personalnummer ${personalNumber} gespeichert: ${newPassword}`);
+            alert('Neues Passwort erfolgreich gespeichert!');
+
+            // Weiterleitung zur Login-Seite
+            window.location.href = '../Lagerbestand/Loginseite_Lager/Loginseite_Lager.html'; // Weiterleitung zur Lagerseite
+        }
+    </script>
 </body>
 </html>
