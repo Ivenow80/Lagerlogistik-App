@@ -1,8 +1,8 @@
 /* Allgemeine Stile für die Seite */
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f9;
-  color: #333;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  background-color: #c29158;
+  color: #1b1717;
   margin: 0;
   padding: 0;
 }
@@ -13,7 +13,7 @@ body {
   max-width: 600px;
   margin: 50px auto;
   padding: 20px;
-  background-color: #ffffff;
+  background-color: #9cb6a0;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
@@ -22,7 +22,7 @@ body {
 /* Überschrift */
 h1 {
   color: #2f312c;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 /* Formular-Stile */
@@ -57,7 +57,7 @@ button {
 }
 
 button:hover {
-  background-color: #218838;
+  background-color: #868821;
 }
 
 /* QR-Code Container */

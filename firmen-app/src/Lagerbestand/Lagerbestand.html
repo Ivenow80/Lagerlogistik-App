@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="Lagerbestand.css">
 </head>
 <body>
-  <button class="login" onclick="login()">Login</button>
+  <button class="logout" onclick="logout()">Logout</button>
 
   <table class="tg">
     <thead>
@@ -62,8 +62,9 @@
   </table>
 
   <script>
-    function login() {
-      alert("Login Funktion hier!");
+    function logout() {
+      alert("erfolgreich ausgelogt!");
+      window.location.href = './Loginseite_Lager/Loginseite_Lager.html'; // Weiterleitung zur Startseite
     }
   </script>
 </body>

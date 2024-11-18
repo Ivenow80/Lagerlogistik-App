@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Passwort-Management</title>
-    <link rel="stylesheet" href="../Neuanmeldung/Neuanmeldung.css"> <!-- Optional, falls CSS benötigt wird -->
+    <link rel="stylesheet" href="../qr_anmeldung/QR_Anmeldung.css"> <!-- Optional, falls CSS benötigt wird -->
 </head>
 <body>
     <div class="app-container">
@@ -13,8 +13,9 @@
             <img src="../Logo/logo_neu.png" alt="Firmenlogo" />
         </div>
 
-        <h2>Anmelde Sicherheitsapp</h2>
+        <h1>Erstanmeldung</h1>
 
+        <!-- Registrierung Formular -->
         <form id="registration-form" onsubmit="return handleLogin(event)">
             <label for="otp-username">Mitarbeiter/Vor- und Nachname:</label>
             <input type="text" id="otp-username" name="otp-username" required>
@@ -24,7 +25,7 @@
             <input type="text" id="otp-personalnummer" name="otp-personalnummer" required>
             <br><br>
 
-            <label for="otp-password">Passwort:</label>
+            <label for="otp-password">Eingabe generiertes einmal Passwort:</label>
             <input type="password" id="otp-password" name="otp-password" required>
             <br><br>
             <input type="submit" value="Login">
@@ -49,6 +50,9 @@
                 <input type="submit" value="Passwort erstellen">
             </form>
         </div>
+
+        <!-- Passwort vergessen Link -->
+        <p><a href="#" id="forgot-password-link" onclick="forgotPassword()">Passwort vergessen?</a></p>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script> <!-- QR-Code Bibliothek -->
@@ -65,7 +69,7 @@
             event.preventDefault();
             const enteredPassword = document.getElementById('otp-password').value;
             const displayedOtp = document.getElementById('otp-display').innerText.split(': ')[1];
-           
+
             if (enteredPassword === displayedOtp) {
                 alert('Einmaliges Passwort korrekt. Bitte erstellen Sie ein neues Passwort.');
                 document.getElementById('password-creation-form').style.display = 'block';
@@ -95,6 +99,13 @@
 
             // Weiterleitung zur Login-Seite
             window.location.href = '../Lagerbestand/Loginseite_Lager/Loginseite_Lager.html'; // Weiterleitung zur Lagerseite
+        }
+
+        // Funktion für "Passwort vergessen"
+        function forgotPassword() {
+            alert("Bitte generieren sie ein Einmalpasswort und erstellen ein neues Passwort.");
+            // Optionale Weiterleitung zu einer Passwort-Wiederherstellungsseite:
+            // window.location.href = "passwort-wiederherstellung.html";
         }
     </script>
 </body>
