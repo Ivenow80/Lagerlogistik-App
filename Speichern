@@ -1,0 +1,95 @@
+Um Daten dauerhaft mit HTML, CSS und JavaScript zu speichern, kannst du clientseitige Speichermethoden verwenden. Hier sind die Optionen, die du nutzen kannst, ohne eine serverseitige Datenbank:
+
+### 1. **LocalStorage**
+`LocalStorage` ist eine einfache Methode, um Daten direkt im Browser dauerhaft zu speichern. Die Daten bleiben auch nach dem Schließen des Browsers erhalten.
+
+**Beispiel:**
+```html
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daten speichern</title>
+  <script>
+    function speichern() {
+      // Daten aus einem Eingabefeld holen und speichern
+      const artikel = document.getElementById('artikelInput').value;
+      const bestand = document.getElementById('bestandInput').value;
+
+      // Objekt erstellen und in LocalStorage speichern
+      const lagerDaten = {
+        artikel: artikel,
+        bestand: bestand
+      };
+      localStorage.setItem('lagerDaten', JSON.stringify(lagerDaten));
+      alert('Daten gespeichert!');
+    }
+
+    function laden() {
+      // Daten aus LocalStorage laden und anzeigen
+      const gespeicherteDaten = localStorage.getItem('lagerDaten');
+      if (gespeicherteDaten) {
+        const daten = JSON.parse(gespeicherteDaten);
+        document.getElementById('anzeige').textContent = `Artikel: ${daten.artikel}, Bestand: ${daten.bestand}`;
+      } else {
+        alert('Keine Daten gespeichert.');
+      }
+    }
+  </script>
+</head>
+<body>
+  <h1>Lagerbestand speichern</h1>
+  <label for="artikelInput">Artikel:</label>
+  <input type="text" id="artikelInput">
+  <br>
+  <label for="bestandInput">Bestand:</label>
+  <input type="text" id="bestandInput">
+  <br>
+  <button onclick="speichern()">Daten speichern</button>
+  <button onclick="laden()">Daten laden</button>
+  <p id="anzeige"></p>
+</body>
+</html>
+```
+
+### 2. **SessionStorage**
+Wenn du nur temporär Daten für die Dauer der Sitzung speichern möchtest, kannst du `sessionStorage` verwenden. Die Daten gehen verloren, sobald der Browser geschlossen wird.
+
+**Änderung der Speicherungsmethode:**
+```javascript
+// Speichern in sessionStorage anstatt in localStorage
+sessionStorage.setItem('lagerDaten', JSON.stringify(lagerDaten));
+```
+
+### 3. **Cookies**
+Eine weitere Möglichkeit ist die Nutzung von Cookies. Dies ist weniger üblich für komplexe Daten, kann aber bei kleinen Informationen praktisch sein.
+
+**Beispiel für Cookies:**
+```javascript
+function setCookie(name, value, days) {
+  const d = new Date();
+  d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
+  let expires = "expires=" + d.toUTCString();
+  document.cookie = name + "=" + value + ";" + expires + ";path=/";
+}
+
+function getCookie(name) {
+  let decodedCookie = decodeURIComponent(document.cookie);
+  let ca = decodedCookie.split(';');
+  for (let i = 0; i < ca.length; i++) {
+    let c = ca[i].trim();
+    if (c.indexOf(name + "=") === 0) {
+      return c.substring((name + "=").length, c.length);
+    }
+  }
+  return "";
+}
+```
+
+### Fazit
+- **LocalStorage** ist die einfachste Methode für dauerhafte Datenspeicherung im Browser.
+- **SessionStorage** eignet sich für temporäre Daten.
+- **Cookies** können verwendet werden, sind jedoch nicht optimal für größere Datenmengen.
+
+Nutze die Methode, die am besten zu deinem Projekt passt.

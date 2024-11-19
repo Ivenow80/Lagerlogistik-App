@@ -1,54 +1,48 @@
-:root {
-    --primary-color: #b51c1c;   /* Rot */
-    --secondary-color: #32cb00; /* Grün */
-    --highlight-color: #3531FF; /* Blau */
-    --background-color: #f2f2f2;
-    --border-color: black;
-    --font-family: Arial, sans-serif;
-    --font-size: 14px;
-  }
-  
-  body {
-    font-family: var(--font-family);
-    background-color: var(--background-color);
-  }
-  
-  table {
-    border-collapse: collapse;
-    width: 100%;
-  }
-  
-  td, th {
-    border-color: var(--border-color);
-    border-style: solid;
-    border-width: 1px;
-    font-size: var(--font-size);
-    padding: 10px 8px;
-    text-align: left;
-  }
-  
-  th {
-    font-weight: normal;
-  }
-  
-  .tg-zz2x { background-color: var(--primary-color); color: white; font-weight: bold; }
-  .tg-dxqr { color: var(--primary-color); text-align: center; }
-  .tg-0r18, .tg-p1nr { text-align: center; }
-  .tg-u3ks { background-color: var(--secondary-color); font-weight: bold; color: white; }
-  .tg-fymr { font-weight: bold; color: var(--highlight-color); }
-  
-  .login-btn {
-    background-color: var(--primary-color);
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-    font-size: 14px;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-  }
-  
-  .login-btn:hover {
-    background-color: darkred;
-  }
-  
+/* Body-Stil */
+body {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  background-color: rgb(227, 193, 82); /* Hintergrundfarbe */
+  justify-content: center; /* Zentrierung des Inhalts */
+  display: flex; /* Flexbox aktivieren */
+  flex-direction: column; /* Elemente vertikal anordnen */
+  align-items: center; /* Horizontale Zentrierung */
+  height: 100%; /* Vollbildhöhe */
+  margin: 0; /* Entfernen des Standardmargins */
+  padding: 10px; /* Etwas Padding für den Abstand */
+}
+
+/* Allgemeine Tabelle */
+table {
+  width: 80%; /* Tabelle auf 80% der Seite setzen */
+  margin: 20px auto; /* Tabelle zentrieren */
+  border-collapse: collapse; /* Ränder zusammenführen */
+  font-size: 12px; /* Schriftgröße verkleinern */
+}
+
+/* Tabellenzellen */
+th, td {
+  padding: 6px 8px; /* Weniger Padding */
+  border: 1px solid #ddd; /* Dünne Ränder */
+  text-align: left; /* Text links ausrichten */
+}
+
+/* Tabellenkopf */
+th {
+  background-color: #4CAF50; /* Grüne Hintergrundfarbe für den Kopfbereich */
+  color: white; /* Weißer Text */
+  font-weight: bold; /* Fett gedruckter Text */
+}
+
+/* Alternierende Zeilen */
+tr:nth-child(even) {
+  background-color: #f2f2f2; /* Helle Hintergrundfarbe für gerade Zeilen */
+}
+
+tr:nth-child(odd) {
+  background-color: #f8f7f1; /* Weiße Hintergrundfarbe für ungerade Zeilen */
+}
+
+/* Hover-Effekt für Zeilen */
+tr:hover {
+  background-color: #a06666; /* Hover-Effekt für Zeilen */
+}

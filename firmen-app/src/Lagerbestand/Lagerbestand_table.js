@@ -1,67 +1,53 @@
-// src/table.js
-// DynamicTable
-import React from 'react';
+// Funktion für das Speichern der Daten und das Hinzufügen zur Tabelle
+function speichern() {
+  const artikel = document.getElementById('artikelInput').value;
+  const bestand = document.getElementById('bestandInput').value;
 
-export default class DynamicTable extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { Name: '', Data: [] };
+  if (!artikel || !bestand) {
+    alert('Bitte füllen Sie beide Felder aus!');
+    return;
   }
 
-  UpdateData(event) {
-    this.setState({ Name: event.target.value });
-  }
+  // Neue Zeile in die Tabelle einfügen
+  const tabelle = document.querySelector('.tg tbody');
+  const neueZeile = document.createElement('tr');
 
-  ClickAction() {
-    var Data = this.state.Data;
-    Data.push(this.state.Name);
-    this.setState({ Data: Data, Name: '' });
-  }
+  neueZeile.innerHTML = `
+    <td class="tg-fymr" contenteditable="true">${tabelle.rows.length + 1}</td>
+    <td class="tg-0pky" contenteditable="true">-</td>
+    <td class="tg-0pky" contenteditable="true">${artikel}</td>
+    <td class="tg-0pky" contenteditable="true">-</td>
+    <td class="tg-0pky" contenteditable="true">-</td>
+    <td class="tg-0r18" contenteditable="true">${bestand}</td>
+    <td class="tg-dxqr" contenteditable="true">-</td>
+    <td class="tg-c3ow" contenteditable="true">-</td>
+    <td class="tg-0pky" contenteditable="true">-</td>
+    <td class="tg-fymr" contenteditable="true">-</td>
+    <td class="tg-0pky" contenteditable="true">-</td>
+    <td class="tg-0pky" contenteditable="true">-</td>
+    <td class="tg-zz2x" contenteditable="true">-</td>
+    <td class="tg-0pky" contenteditable="true">-</td>
+    <td class="tg-0pky" contenteditable="true">-</td>
+    <td class="tg-0pky" contenteditable="true">-</td>
+    <td class="tg-0pky" contenteditable="true">-</td>
+    <td class="tg-l6li" contenteditable="true">-</td>
+    <td class="tg-0pky" contenteditable="true">-</td>
+  `;
 
-  OnDataChange(i, event) {
-    var Data = this.state.Data;
-    Data[i] = event.target.value;
-    this.setState({ Data: Data });
-  }
+  tabelle.appendChild(neueZeile);
 
-  OnDataDelete(i) {
-    var Data = this.state.Data;
-    Data.splice(i, 1);
-    this.setState({ Data: Data });
-  }
+  // Zellen zum Auswählen und Ändern der Farben (Text und Hintergrund) aktivieren
+  const zellen = neueZeile.querySelectorAll('td');
+  zellen.forEach(zelle => {
+    zelle.addEventListener('click', function() {
+      // Wenn eine Zelle angeklickt wird, wende die ausgewählten Farben darauf an
+      const textColor = document.getElementById('textColor').value;
+      const bgColor = document.getElementById('bgColor').value;
 
-  DrawTable() {
-    var context = this;
-    return this.state.Data.map(function (o, i) {
-      return (
-        <tr key={'item-' + i}>
-          <td>
-            <input type="text" value={o} onChange={context.OnDataChange.bind(context, i)} />
-          </td>
-          <td>
-            <button onClick={context.OnDataDelete.bind(context, i)}>Delete</button>
-          </td>
-        </tr>
-      );
+      this.style.color = textColor; // Textfarbe der angeklickten Zelle ändern
+      this.style.backgroundColor = bgColor; // Hintergrundfarbe der angeklickten Zelle ändern
     });
-  }
+  });
 
-  render() {
-    return (
-      <div>
-        <table>
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>{this.DrawTable()}</tbody>
-        </table>
-        <hr />
-        <input type="text" value={this.state.Name} onChange={this.UpdateData.bind(this)} />
-        <button onClick={this.ClickAction.bind(this)}>Add Item</button>
-      </div>
-    );
-  }
+  alert('Daten erfolgreich gespeichert und zur Tabelle hinzugefügt!');
 }

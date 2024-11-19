@@ -8,7 +8,7 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: rgb(179, 195, 98);
+  background-color: rgb(204, 176, 77);
 }
 
 .app-container {
@@ -71,7 +71,7 @@ button {
 }
 
 a {
-  color: #007bff;
+  color:#780f0f;
   text-decoration: none;
   font-size: 0.9rem;
   margin-top: 10px;
@@ -80,4 +80,5 @@ a {
 
 a:hover {
   text-decoration: underline;
+
 }
