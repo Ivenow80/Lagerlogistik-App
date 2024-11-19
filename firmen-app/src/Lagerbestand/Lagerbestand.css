@@ -11,6 +11,7 @@ body {
   padding: 10px; /* Etwas Padding für den Abstand */
 }
 
+
 /* Allgemeine Tabelle */
 table {
   width: 80%; /* Tabelle auf 80% der Seite setzen */
@@ -19,12 +20,14 @@ table {
   font-size: 12px; /* Schriftgröße verkleinern */
 }
 
+
 /* Tabellenzellen */
 th, td {
   padding: 6px 8px; /* Weniger Padding */
   border: 1px solid #ddd; /* Dünne Ränder */
   text-align: left; /* Text links ausrichten */
 }
+
 
 /* Tabellenkopf */
 th {
@@ -33,14 +36,17 @@ th {
   font-weight: bold; /* Fett gedruckter Text */
 }
 
+
 /* Alternierende Zeilen */
 tr:nth-child(even) {
   background-color: #f2f2f2; /* Helle Hintergrundfarbe für gerade Zeilen */
 }
 
+
 tr:nth-child(odd) {
   background-color: #f8f7f1; /* Weiße Hintergrundfarbe für ungerade Zeilen */
 }
+
 
 /* Hover-Effekt für Zeilen */
 tr:hover {

@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="de">
 <head>
   <meta charset="UTF-8">
@@ -8,11 +7,19 @@
 </head>
 <body>
 
+
   <div class="container">
     <h1>Lagerverwaltung</h1>
+    <div class="container">
+
+      <!-- Logo -->
+    <div class="logo-container">
+      <img src="../Logo/logo_neu.png" alt="Lagerverwaltung Logo" class="logo">
+    </div>
 
     <!-- Logout Button -->
     <button class="logout-btn" onclick="logout()">Logout</button>
+
 
     <!-- Farbwahl für Text und Hintergrund -->
     <div class="color-picker">
@@ -22,13 +29,16 @@
       <input type="color" id="bgColor" value="#ffffff">
     </div>
 
+
     <!-- Eingabeformular -->
     <form id="lagerForm">
       <label for="artikelInput">Artikelbezeichnung:</label>
       <input type="text" id="artikelInput" required>
 
+
       <label for="bestandInput">Bestand:</label>
       <input type="number" id="bestandInput" required>
+
 
       <button type="button" onclick="speichern()">Speichern</button>
     </form>
@@ -68,15 +78,18 @@
 </div>
 
 
+
+
   <script src="Lagerbestand_table.js"></script>
+
 
   <script>
     // Funktion für Logout, die auf die Login-Seite weiterleitet
     function logout() {
-      window.location.href = '../Startseite/Startseite.html'; // URL der Login-Seite
+      window.location.href = './Loginseite_Lager/Loginseite_Lager.html'; // URL der Login-Seite
     }
   </script>
 
+
 </body>
 </html>
-
