@@ -1,7 +1,7 @@
 /* Body-Stil */
 body {
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  background-color: rgb(227, 193, 82); /* Hintergrundfarbe */
+  background-color: #f1e6b4; /* Hintergrundfarbe */
   justify-content: center; /* Zentrierung des Inhalts */
   display: flex; /* Flexbox aktivieren */
   flex-direction: column; /* Elemente vertikal anordnen */
@@ -31,7 +31,7 @@ th, td {
 
 /* Tabellenkopf */
 th {
-  background-color: #4CAF50; /* Grüne Hintergrundfarbe für den Kopfbereich */
+  background-color: #1e7289; /* Grüne Hintergrundfarbe für den Kopfbereich */
   color: white; /* Weißer Text */
   font-weight: bold; /* Fett gedruckter Text */
 }

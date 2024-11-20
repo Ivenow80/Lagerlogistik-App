@@ -3,23 +3,25 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login zur Sicherheitsapp</title>
-    <link rel="stylesheet" href="./Loginseite_Lager.css" />
+    <title>QR-Code für Lagerbestandsseite</title>
+    <link rel="stylesheet" href="../../Startseite/Startseite.css">
+   
   </head>
   <body>
     <div class="app-container">
       <!-- Firmenlogo -->
-      <div class="logo_neu">
-        <img src="../../Logo/logo_neu.png" alt="Firmenlogo" />
+      <div class="logo_aktuell">
+        <img src="../../Logo/logo_aktuell.png" alt="logo" />
       </div>
       <h1>Login</h1>
-
-      <h2>L A G E R- L O G I S T I K</h2>
+      <h2>L A G E R - L O G I S T I K</h2>
 
       <!-- QR Code Bereich -->
       <div class="qr-code">
-        <h3>QR Code</h3>
-        <div id="qr-container"></div>
+        <h3>QR Code für Lagerbestandsseite</h3>
+        <div id="qrcode"></div>
+        <p id="timestamp"></p>
+        <button id="regenButton">Jetzt QR-Code neu generieren</button>
       </div>
 
       <!-- Login-Formular -->
@@ -32,32 +34,56 @@
 
         <input type="submit" value="Login" />
       </form>
-
       <a href="#">Passwort vergessen?</a>
     </div>
 
     <!-- Verlinkung des eigenen JavaScript-Codes -->
     <script src="Loginseite_Lager.js"></script>
 
-    <!-- Einbindung der QR-Code-Bibliothek von JSDelivr -->
+    <!-- Einbindung der QR-Code-Bibliothek -->
     <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/davidshimjs/qrcodejs/qrcode.min.js"></script>
 
     <script>
-      // QR-Code generieren mit Personalnummer und Passwort
-      const personalnummer = localStorage.getItem("personalnummer");
-      const password = localStorage.getItem("loginPassword");
+      // QR-Code für Lagerbestandsseite generieren
+      const generateQRCode = () => {
+        const qrCodeContainer = document.getElementById("qrcode");
+        const lagerBestandsURL = "https://example.com/lagerbestand"; // URL zur Lagerbestandsseite
 
-      const loginData = `Personalnummer: ${personalnummer}, Passwort: ${password}`;
+        qrCodeContainer.innerHTML = ""; // Entferne alten QR-Code
+        new QRCode(qrCodeContainer, {
+          text: lagerBestandsURL,
+          width: 200,
+          height: 200,
+        });
 
-      // QR-Code erstellen und in den QR-Container einfügen
-      QRCode.toCanvas(
-        document.getElementById("qr-container"),
-        loginData,
-        function (error) {
-          if (error) console.error(error);
-          console.log("QR Code generiert!");
-        }
-      );
+        const timestamp = new Date();
+        updateTimestamp(timestamp);
+      };
+
+      // Aktualisiere die Anzeige der Zeit
+      const updateTimestamp = (timestamp) => {
+        const formattedTime = timestamp.toLocaleTimeString("de-DE", {
+          hour: "2-digit",
+          minute: "2-digit",
+          second: "2-digit",
+        });
+        document.getElementById("timestamp").textContent = `Letzte Generierung: ${formattedTime}`;
+      };
+
+      // Timer, um alle 2 Stunden den QR-Code neu zu generieren
+      const startQRCodeTimer = () => {
+        generateQRCode(); // Initialer QR-Code
+        setInterval(generateQRCode, 2 * 60 * 60 * 1000); // Alle 2 Stunden
+      };
+
+      // Manuelles Neu-Generieren durch Button
+      document.getElementById("regenButton").addEventListener("click", () => {
+        generateQRCode();
+      });
+
+      // Initialisieren
+      window.onload = startQRCodeTimer;
 
       // Funktion zur Handhabung des Login-Formulars
       function handleLogin(event) {
