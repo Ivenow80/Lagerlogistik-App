@@ -14,7 +14,7 @@
     <div class="app-container">
         <!-- Firmenlogo -->
         <div class="logo_aktuell">
-            <img src="../Logo/logo_aktuell.png" alt= "Logo"  class="logo_aktuell"/>
+            <img src="../Logo/logo_aktuell.png" alt="Logo"  class="logo_aktuell"/>
         </div>
 
         <h1>Erstanmeldung</h1>
@@ -57,6 +57,13 @@
 
         <!-- Passwort vergessen Link -->
         <p><a href="#" id="forgot-password-link" onclick="forgotPassword()">Passwort vergessen?</a></p>
+        
+        <!-- Array der Benutzerinformationen -->
+        <div id="user-info" style="display: none;">
+            <h3>Benutzerinformationen</h3>
+            <p id="user-info-message"></p>
+        </div>
+
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script> <!-- QR-Code Bibliothek -->
@@ -76,7 +83,22 @@
 
             if (enteredPassword === displayedOtp) {
                 alert('Einmaliges Passwort korrekt. Bitte erstellen Sie ein neues Passwort.');
+                
+                // Zeigt das Formular zum Erstellen eines neuen Passworts
                 document.getElementById('password-creation-form').style.display = 'block';
+
+                // Benutzerinformationen (Array) wird angezeigt
+                const userInfo = {
+                    username: document.getElementById('otp-username').value,
+                    personalnummer: document.getElementById('otp-personalnummer').value,
+                    message: 'Bitte erstellen Sie ein neues Passwort!'
+                };
+                
+                // Zeigt die Benutzerinformationen und die Nachricht an
+                document.getElementById('user-info-message').innerText = 
+                    `Benutzername: ${userInfo.username}\nPersonalnummer: ${userInfo.personalnummer}\nNachricht: ${userInfo.message}`;
+                
+                document.getElementById('user-info').style.display = 'block';
             } else {
                 alert('Ungültiges Passwort. Bitte versuchen Sie es erneut.');
             }
@@ -107,7 +129,7 @@
 
         // Funktion für "Passwort vergessen"
         function forgotPassword() {
-            alert("Bitte generieren sie ein Einmalpasswort und erstellen ein neues Passwort.");
+            alert("Bitte generieren Sie ein Einmalpasswort und erstellen Sie ein neues Passwort.");
             // Optionale Weiterleitung zu einer Passwort-Wiederherstellungsseite:
             // window.location.href = "passwort-wiederherstellung.html";
         }

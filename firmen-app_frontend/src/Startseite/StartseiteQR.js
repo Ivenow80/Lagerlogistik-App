@@ -1,5 +1,3 @@
-// QR_Anmeldung.js
-
 // Funktion zum Generieren eines Einmalpassworts
 function generateOneTimePassword() {
     const otp = Math.random().toString(36).slice(-8); // Einfach generiertes Passwort
@@ -15,7 +13,22 @@ function handleLogin(event) {
 
     if (enteredPassword === displayedOtp) {
         alert('Einmaliges Passwort korrekt. Bitte erstellen Sie ein neues Passwort.');
+        
+        // Zeigt das Formular zum Erstellen eines neuen Passworts
         document.getElementById('password-creation-form').style.display = 'block';
+
+        // Benutzerinformationen (Array) wird angezeigt
+        const userInfo = {
+            username: document.getElementById('otp-username').value,
+            personalnummer: document.getElementById('otp-personalnummer').value,
+            message: 'Bitte erstellen Sie ein neues Passwort!'
+        };
+        
+        // Zeigt die Benutzerinformationen und die Nachricht an
+        document.getElementById('user-info-message').innerText = 
+            `Benutzername: ${userInfo.username}\nPersonalnummer: ${userInfo.personalnummer}\nNachricht: ${userInfo.message}`;
+        
+        document.getElementById('user-info').style.display = 'block';
     } else {
         alert('Ungültiges Passwort. Bitte versuchen Sie es erneut.');
     }
@@ -46,7 +59,7 @@ function saveNewPassword(event) {
 
 // Funktion für "Passwort vergessen"
 function forgotPassword() {
-    alert("Bitte wenden Sie sich an den Support oder folgen Sie dem Link zur Passwort-Wiederherstellung.");
+    alert("Bitte generieren Sie ein Einmalpasswort und erstellen Sie ein neues Passwort.");
     // Optionale Weiterleitung zu einer Passwort-Wiederherstellungsseite:
     // window.location.href = "passwort-wiederherstellung.html";
 }

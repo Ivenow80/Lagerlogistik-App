@@ -4,8 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lagerverwaltung</title>
-  <!-- Verlinkung zur externen CSS-Datei -->
-  <link rel="stylesheet" href="Lagerbestand.css">
+  <link rel="stylesheet" href="./Lagertabelle/Lagertabelle.css">
 </head>
 <body>
   <div class="container">
@@ -22,95 +21,114 @@
           <label for="posInput">Position:</label>
           <input type="text" id="posInput" placeholder="Position eingeben" required />
         </div>
+        <br />
         <div class="form-group">
           <label for="artikelnummerInput">Artikelnummer:</label>
           <input type="text" id="artikelnummerInput" placeholder="Artikelnummer eingeben" required />
         </div>
+        <br />
         <div class="form-group">
           <label for="artikelbezeichnugInput">Artikel-Bezeichnung:</label>
           <input type="text" id="artikelbezeichnugInput" placeholder="Bezeichnung eingeben" required />
         </div>
+        <br />
         <div class="form-group">
           <label for="lagerInput">Lager:</label>
           <input type="text" id="lagerInput" placeholder="Lager eingeben" required />
         </div>
+        <br />  
         <div class="form-group">
           <label for="lagerplatzInput">Lagerplatz:</label>
           <input type="text" id="lagerplatzInput" placeholder="Lagerplatz eingeben" required />
         </div>
+        <br />
         <div class="form-group">
           <label for="lagerbestandInput">Lagerbestand:</label>
           <input type="number" id="lagerbestandInput" placeholder="Lagerbestand eingeben" required />
         </div>
+        <br />
         <div class="form-group">
           <label for="warenentnahmeInput">Waren-Entnahme:</label>
           <input type="number" id="warenentnahmeInput" placeholder="Waren-Entnahme eingeben" required />
         </div>
+        <br />
         <div class="form-group">
           <label for="warehinzugefügtInput">Ware hinzugefügt:</label>
           <input type="number" id="warehinzugefügtInput" placeholder="Ware hinzugefügt eingeben" required />
         </div>
+        <br />  
         <div class="form-group">
           <label for="einheitInput">Einheit:</label>
           <input type="text" id="einheitInput" placeholder="Einheit eingeben" required />
         </div>
+        <br />
         <div class="form-group">
           <label for="preisproeinheitInput">Preis pro Einheit:</label>
           <input type="number" step="0.01" id="preisproeinheitInput" placeholder="Preis pro Einheit eingeben" required />
         </div>
+        <br />
+        <div class="form-group">
+          <label for="erstellungsdatumInput">Erstellungsdatum:</label>
+          <input type="date" id="erstellungsdatumInput" required />
+        </div>
+        <br />
         <div class="form-group">
           <label for="wertlagerbestandInput">Wert Lagerbestand:</label>
           <input type="number" step="0.01" id="wertlagerbestandInput" placeholder="Wert Lagerbestand eingeben" required />
         </div>
+        <br />
         <div class="form-group">
           <label for="mindestmengeInput">Mindestmenge:</label>
           <input type="number" id="mindestmengeInput" placeholder="Mindestmenge eingeben" required />
         </div>
+        <br />
         <div class="form-group">
           <label for="nachbestellenInput">Nachbestellen:</label>
           <input type="text" id="nachbestellenInput" placeholder="Nachbestellen eingeben" required />
         </div>
+        <br />
         <div class="form-group">
           <label for="minbestellmengeInput">Minimale Bestellmenge:</label>
           <input type="number" id="minbestellmengeInput" placeholder="Minimale Bestellmenge eingeben" required />
         </div>
+        <br />
         <div class="form-group">
           <label for="lieferantInput">Lieferant:</label>
           <input type="text" id="lieferantInput" placeholder="Lieferant eingeben" required />
         </div>
+        <br />
         <div class="form-group">
           <label for="besttellmengeInput">Bestellmenge:</label>
           <input type="number" id="besttellmengeInput" placeholder="Bestellmenge eingeben" required />
         </div>
+        <br />
         <div class="form-group">
           <label for="nachbestelltamInput">Nachbestellt am:</label>
           <input type="date" id="nachbestelltamInput" required />
         </div>
+        <br />
         <div class="form-group">
           <label for="lieferzeitInput">Lieferzeit:</label>
           <input type="text" id="lieferzeitInput" placeholder="Lieferzeit eingeben" required />
         </div>
+        <br />
         <div class="form-group">
           <label for="mitarbeiterInput">Mitarbeiter:</label>
           <input type="text" id="mitarbeiterInput" placeholder="Mitarbeiter eingeben" required />
         </div>
+        <br />
         <div class="form-group">
           <label for="personalnummerInput">Personalnummer:</label>
           <input type="text" id="personalnummerInput" placeholder="Personalnummer eingeben" required />
         </div>
       </div>
 
-      <!-- Farbauswahl -->
-      <div class="color-selection">
-        <label for="textColor">Textfarbe:</label>
-        <input type="color" id="textColor" value="#000000" />
-        <label for="bgColor">Hintergrundfarbe:</label>
-        <input type="color" id="bgColor" value="#ffffff" />
-      </div>
       <button type="button" id="speichernButton" onclick="speichern()">Speichern</button>
     </form>
+  </div>
 
-  <!-- Verlinkung zur externen JavaScript-Datei -->
-  <script src="Lagerbestand.css"></script>
+  <script src="speicher.js"></script>
+  <script src="Lagertabelle.html"></script>
+  <script src="Lagerbestand.html"></script>
 </body>
 </html>
