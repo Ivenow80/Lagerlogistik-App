@@ -16,6 +16,22 @@
       <h1>Lagerverwaltung</h1>
     </div>
 
+    <!-- Logout-Button -->
+    <div class="logout-container" style="text-align: right; margin: 10px;">
+      <button type="button" id="logoutButton" onclick="logout()">Logout</button>
+    </div>
+
+    <!-- Farbauswahl -->
+    <div class="color-picker-container" style="margin: 20px 0; text-align: left;">
+      <label for="backgroundColorPicker">Hintergrundfarbe auswählen:</label>
+      <input type="color" id="backgroundColorPicker" name="backgroundColorPicker">
+
+      <label for="textColorPicker" style="margin-left: 20px;">Textfarbe auswählen:</label>
+      <input type="color" id="textColorPicker" name="textColorPicker">
+
+      <button type="button" id="applyColorsButton" onclick="applyColors()">Farben anwenden</button>
+    </div>
+
     <!-- Formular -->
     <form id="dataForm">
       <div class="form">
@@ -26,6 +42,9 @@
     <!-- Tabelle -->
     <div class="tbcontainer">
       <h2>Tabelle</h2>
+    </div>
+
+    <div class="lagerbestand">
       <table class="tg">
         <thead>
           <tr>
@@ -61,6 +80,27 @@
   <!-- Verlinkung zur externen JavaScript-Datei -->
   <script src="Lagerverwaltung.js"></script>
   <script src="speichern.js"></script>
-  <script src="../Loginseite_Lager/Loginseite_Lager.html"></script>
+  <script>
+    // Funktion für den Logout-Button
+    function logout() {
+      alert("Sie haben sich erfolgreich ausgeloggt.");
+      window.location.href = "../Loginseite_Lager/Loginseite_Lager.html"; // Weiterleitung zur Loginseite
+    }
+
+    // Funktion zum Anwenden der Farbauswahl
+    function applyColors() {
+      // Hole die ausgewählten Farben
+      const backgroundColor = document.getElementById('backgroundColorPicker').value;
+      const textColor = document.getElementById('textColorPicker').value;
+
+      // Wende die Farben auf die Tabelle an
+      const table = document.querySelector('.lagerbestand table');
+      table.style.backgroundColor = backgroundColor;
+      table.style.color = textColor;
+
+      // Optional: Informiere den Nutzer über die Farbänderung
+      alert("Farben wurden angewendet!");
+    }
+  </script>
 </body>
 </html>

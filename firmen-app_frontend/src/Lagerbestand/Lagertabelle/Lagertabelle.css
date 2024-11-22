@@ -5,11 +5,24 @@ html, body {
     background-color: #f5f3c1; /* Hintergrundfarbe */
     font-family: Arial, sans-serif;
   }
-  
   .container {
-    width: 100%;
+    max-width: 1200px;
+    margin: 2px auto;
     padding: 20px;
+    background-color: white;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
   }
+ 
+  .lagerbestend {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 10px;
+    background-color: white;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  }
+  
   
   .ueberschrift {
     text-align: center;
@@ -23,10 +36,11 @@ html, body {
   
   /* Anpassungen für die Tabelle */
   table.tg {
-    margin: 0 auto; /* Tabelle mittig ausrichten */
+    margin: 2px ; /* Tabelle mittig ausrichten */
     border-collapse: collapse; /* Entfernt doppelte Ränder */
-    width: 90%; /* Maximale Breite der Tabelle auf 90% setzen */
-    max-width: 1200px; /* Maximale Breite der Tabelle */
+    width: 5%;
+    padding: 1px;
+    max-width: 900px; /* Maximale Breite der Tabelle */
   }
   
   th, td {
@@ -62,10 +76,11 @@ html, body {
   @media (max-width: 768px) {
     table.tg {
       width: 100%; /* Tabelle bei kleineren Bildschirmen auf 100% Breite */
+    
     }
   
     th, td {
-      font-size: 12px; /* Kleinere Schriftgröße auf kleinen Geräten */
+      font-size: 1px; /* Kleinere Schriftgröße auf kleinen Geräten */
     }
   
     button {
