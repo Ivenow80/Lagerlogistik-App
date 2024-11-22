@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,70 +8,81 @@
   <!-- Verlinkung der externen CSS-Datei -->
   <link rel="stylesheet" href="Lagerbestand.css">
 </head>
+
 <body>
 
   <!-- Formular zur Eingabe von Lagerdaten -->
   <div class="form-container">
     <h2>Neuen Lagerbestand hinzufügen</h2>
     <form id="dataForm" onsubmit="event.preventDefault(); speichern();">
-      <label for="posInput">Position:</label>
-      <input type="text" id="posInput" name="pos"><br>
+      
+      <div class="form-section">
+        <label for="posInput">Position:</label>
+        <input type="text" id="posInput" name="pos"><br>
 
-      <label for="artikelnummerInput">Artikelnummer:</label>
-      <input type="text" id="artikelnummerInput" name="artikelnummer"><br>
+        <label for="artikelnummerInput">Artikelnummer:</label>
+        <input type="text" id="artikelnummerInput" name="artikelnummer"><br>
 
-      <label for="artikelbezeichnugInput">Artikelbezeichnung:</label>
-      <input type="text" id="artikelbezeichnugInput" name="artikelbezeichnung"><br>
+        <label for="artikelbezeichnugInput">Artikelbezeichnung:</label>
+        <input type="text" id="artikelbezeichnugInput" name="artikelbezeichnung"><br>
 
-      <label for="lagerInput">Lager:</label>
-      <input type="text" id="lagerInput" name="lager"><br>
+        <label for="lagerInput">Lager:</label>
+        <input type="text" id="lagerInput" name="lager"><br>
 
-      <label for="lagerplatzInput">Lagerplatz:</label>
-      <input type="text" id="lagerplatzInput" name="lagerplatz"><br>
+        <label for="lagerplatzInput">Lagerplatz:</label>
+        <input type="text" id="lagerplatzInput" name="lagerplatz"><br>
 
-      <label for="lagerbestandInput">Lagerbestand:</label>
-      <input type="number" id="lagerbestandInput" name="lagerbestand" required><br>
+        <label for="lagerbestandInput">Lagerbestand:</label>
+        <input type="number" id="lagerbestandInput" name="lagerbestand" required><br>
+      </div>
+      
+      <div class="form-section">
+        <label for="warenentnahmeInput">Warenentnahme:</label>
+        <input type="number" id="warenentnahmeInput" name="warenentnahme"><br>
 
-      <label for="warenentnahmeInput">Warenentnahme:</label>
-      <input type="number" id="warenentnahmeInput" name="warenentnahme"><br>
+        <label for="warehinzugefügtInput">Ware hinzugefügt:</label>
+        <input type="number" id="warehinzugefügtInput" name="warehinzugefügt"><br>
 
-      <label for="warehinzugefügtInput">Ware hinzugefügt:</label>
-      <input type="number" id="warehinzugefügtInput" name="warehinzugefügt"><br>
+        <label for="einheitInput">Einheit:</label>
+        <input type="text" id="einheitInput" name="einheit"><br>
 
-      <label for="einheitInput">Einheit:</label>
-      <input type="text" id="einheitInput" name="einheit"><br>
+        <label for="preisproeinheitInput">Preis pro Einheit:</label>
+        <input type="number" id="preisproeinheitInput" name="preisproeinheit"><br>
 
-      <label for="preisproeinheitInput">Preis pro Einheit:</label>
-      <input type="number" id="preisproeinheitInput" name="preisproeinheit"><br>
+        <label for="mindestmengeInput">Mindestmenge:</label>
+        <input type="number" id="mindestmengeInput" name="mindestmenge"><br>
+      </div>
 
-      <label for="mindestmengeInput">Mindestmenge:</label>
-      <input type="number" id="mindestmengeInput" name="mindestmenge"><br>
+      <div class="form-section">
+        <label for="nachbestellenInput">Nachbestellen:</label>
+        <input type="checkbox" id="nachbestellenInput" name="nachbestellen"><br>
 
-      <label for="nachbestellenInput">Nachbestellen:</label>
-      <input type="checkbox" id="nachbestellenInput" name="nachbestellen"><br>
+        <label for="minbestellmengeInput">Mindestbestellmenge:</label>
+        <input type="number" id="minbestellmengeInput" name="minbestellmenge"><br>
 
-      <label for="minbestellmengeInput">Mindestbestellmenge:</label>
-      <input type="number" id="minbestellmengeInput" name="minbestellmenge"><br>
+        <label for="lieferantInput">Lieferant:</label>
+        <input type="text" id="lieferantInput" name="lieferant"><br>
 
-      <label for="lieferantInput">Lieferant:</label>
-      <input type="text" id="lieferantInput" name="lieferant"><br>
+        <label for="besttellmengeInput">Bestellmenge:</label>
+        <input type="number" id="besttellmengeInput" name="bestellmenge"><br>
 
-      <label for="besttellmengeInput">Bestellmenge:</label>
-      <input type="number" id="besttellmengeInput" name="bestellmenge"><br>
+        <label for="nachbestelltamInput">Nachbestellt am:</label>
+        <input type="date" id="nachbestelltamInput" name="nachbestelltam"><br>
 
-      <label for="nachbestelltamInput">Nachbestellt am:</label>
-      <input type="date" id="nachbestelltamInput" name="nachbestelltam"><br>
+        <label for="lieferzeitInput">Lieferzeit:</label>
+        <input type="number" id="lieferzeitInput" name="lieferzeit"><br>
+      </div>
 
-      <label for="lieferzeitInput">Lieferzeit:</label>
-      <input type="number" id="lieferzeitInput" name="lieferzeit"><br>
+      <div class="form-section">
+        <label for="mitarbeiterInput">Mitarbeiter:</label>
+        <input type="text" id="mitarbeiterInput" name="mitarbeiter"><br>
 
-      <label for="mitarbeiterInput">Mitarbeiter:</label>
-      <input type="text" id="mitarbeiterInput" name="mitarbeiter"><br>
+        <label for="personalnummerInput">Personalnummer:</label>
+        <input type="text" id="personalnummerInput" name="personalnummer"><br>
 
-      <label for="personalnummerInput">Personalnummer:</label>
-      <input type="text" id="personalnummerInput" name="personalnummer"><br>
-
-      <button type="submit">Daten speichern</button>
+        <button type="submit">Daten speichern</button>
+      </div>
+      
     </form>
   </div>
 
@@ -113,4 +125,5 @@
   <script src="Lagerspeicher.js"></script>
 
 </body>
+
 </html>
