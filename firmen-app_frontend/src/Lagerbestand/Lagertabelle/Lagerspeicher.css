@@ -4,7 +4,7 @@ body {
     margin: 0;
     padding: 20px;
     background-color: #f1e6b4;
-    color: 
+    color: #333;  /* Farbe für den Text */
   }
   
   h1 {
@@ -22,10 +22,11 @@ body {
     background-color: #ffffff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
-  /*Tabellenblock*/
-   th, td {
+  
+  /* Tabellenblock */
+  th, td {
     border: 1px solid #ddd;
-    padding: 1px;
+    padding: 12px;  /* Etwas größere Polsterung für bessere Lesbarkeit */
     text-align: center;
     font-size: 0.9em;
   }
