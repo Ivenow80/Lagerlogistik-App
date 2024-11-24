@@ -3,9 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>QR-Code für Lagerbestandsseite</title>
-    <link rel="stylesheet" href="../../Startseite/Startseite.css">
-   
+    <title>Login und QR-Code für Lagerbestandsseite</title>
+    <link rel="stylesheet" href="../../Startseite/Startseite.css" />
   </head>
   <body>
     <div class="app-container">
@@ -13,6 +12,10 @@
       <div class="logo_aktuell">
         <img src="../../Logo/logo_aktuell.png" alt="logo" />
       </div>
+
+      <!-- Haupt-Zurück-Button -->
+      <button id="backButtonMain">Zurück zur Neuanmeldeseite</button>
+
       <h1>Login</h1>
       <h2>L A G E R - L O G I S T I K</h2>
 
@@ -29,12 +32,32 @@
         <label for="personalnummer">Personalnummer:</label>
         <input type="text" id="personalnummer" name="personalnummer" required />
 
-        <label for="login-password">Neues Passwort:</label>
+        <label for="login-password">Passwort:</label>
         <input type="password" id="login-password" name="login-password" required />
 
         <input type="submit" value="Login" />
       </form>
-      <a href="#">Passwort vergessen?</a>
+      <a href="#" id="forgot-password-link" onclick="handleForgotPassword()">Passwort vergessen?</a>
+
+      <!-- Passwort erstellen Formular (versteckt standardmäßig) -->
+      <div id="password-reset-form" style="display: none;">
+        <h3>Neues Passwort erstellen</h3>
+        <form id="reset-password-form" onsubmit="return resetPassword(event)">
+          <label for="generated-password">Generiertes Passwort:</label>
+          <input type="text" id="generated-password" readonly />
+          <br /><br />
+          <label for="new-password">Neues Passwort:</label>
+          <input type="password" id="new-password" name="new-password" required />
+          <br /><br />
+          <label for="confirm-password">Passwort bestätigen:</label>
+          <input type="password" id="confirm-password" name="confirm-password" required />
+          <br /><br />
+          <input type="submit" value="Passwort erstellen" />
+        </form>
+
+        <!-- Zurück-Button im Passwort-Reset-Formular -->
+        <button id="backButton">Zurück zur Neuanmeldeseite</button>
+      </div>
     </div>
 
     <!-- Verlinkung des eigenen JavaScript-Codes -->
@@ -45,6 +68,26 @@
     <script src="https://cdn.jsdelivr.net/gh/davidshimjs/qrcodejs/qrcode.min.js"></script>
 
     <script>
+      // Event-Listener für den Haupt-Zurück-Button
+      document.getElementById("backButtonMain").addEventListener("click", () => {
+        const userConfirmed = confirm("Sie gehen jetzt zurück zur Neuanmeldeseite. Möchten Sie fortfahren?");
+        
+        // Wenn der Benutzer "OK" klickt, weiter zur Neuanmeldeseite
+        if (userConfirmed) {
+          window.location.href = "../../Startseite/Startseite.html"; // Hier den tatsächlichen Pfad zur Neuanmeldeseite angeben
+        }
+      });
+
+      // Event-Listener für den Zurück-Button im Passwort-Reset-Formular
+      document.getElementById("backButton").addEventListener("click", () => {
+        const userConfirmed = confirm("Sie gehen jetzt zurück zur Neuanmeldeseite. Möchten Sie fortfahren?");
+        
+        // Wenn der Benutzer "OK" klickt, weiter zur Neuanmeldeseite
+        if (userConfirmed) {
+          window.location.href = "../../Startseite/Startseite.html"; // Hier den tatsächlichen Pfad zur Neuanmeldeseite angeben
+        }
+      });
+
       // QR-Code für Lagerbestandsseite generieren
       const generateQRCode = () => {
         const qrCodeContainer = document.getElementById("qrcode");
@@ -82,7 +125,7 @@
         generateQRCode();
       });
 
-      // Initialisieren
+      // Initialisieren der QR-Code-Funktionalität
       window.onload = startQRCodeTimer;
 
       // Funktion zur Handhabung des Login-Formulars
@@ -105,6 +148,39 @@
         } else {
           alert("Ungültige Anmeldedaten. Bitte versuchen Sie es erneut.");
         }
+      }
+
+      // Funktion zum Handhaben von "Passwort vergessen"
+      function handleForgotPassword() {
+        alert("Bitte generieren Sie ein neues Passwort und erstellen Sie ein neues.");
+        
+        // Zeige das Formular zur Passwortgenerierung
+        document.getElementById("password-reset-form").style.display = "block";
+
+        // Generiere ein neues Passwort
+        const newGeneratedPassword = Math.random().toString(36).slice(-8);
+        document.getElementById("generated-password").value = newGeneratedPassword;
+      }
+
+      // Funktion zum Zurücksetzen des Passworts
+      function resetPassword(event) {
+        event.preventDefault();
+
+        const newPassword = document.getElementById("new-password").value;
+        const confirmPassword = document.getElementById("confirm-password").value;
+
+        if (newPassword !== confirmPassword) {
+          alert("Die Passwörter stimmen nicht überein. Bitte erneut eingeben.");
+          return;
+        }
+
+        // Speichere das neue Passwort im localStorage
+        const personalnummer = document.getElementById("personalnummer").value;
+        localStorage.setItem("personalnummer", personalnummer);
+        localStorage.setItem("loginPassword", newPassword);
+
+        alert("Ihr neues Passwort wurde erfolgreich erstellt!");
+        window.location.href = "../Lagerbestand.html"; // Weiterleitung nach erfolgreichem Reset
       }
     </script>
   </body>

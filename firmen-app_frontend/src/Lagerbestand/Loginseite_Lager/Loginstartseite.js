@@ -1,21 +1,35 @@
-// URL zur Lagerbestandsseite
-const lagerBestandsURL = "https://example.com/lagerbestand";
+// Event-Listener für den Haupt-Zurück-Button
+document.getElementById("backButtonMain").addEventListener("click", () => {
+  const userConfirmed = confirm("Sie gehen jetzt zurück zur Neuanmeldeseite. Möchten Sie fortfahren?");
+  
+  // Wenn der Benutzer "OK" klickt, weiter zur Neuanmeldeseite
+  if (userConfirmed) {
+    window.location.href = "Pfad/zur/Neuanmeldeseite.html"; // Hier den tatsächlichen Pfad zur Neuanmeldeseite angeben
+  }
+});
 
-// QR-Code Generierung und Zeitmanagement
+// Event-Listener für den Zurück-Button im Passwort-Reset-Formular
+document.getElementById("backButton").addEventListener("click", () => {
+  const userConfirmed = confirm("Sie gehen jetzt zurück zur Neuanmeldeseite. Möchten Sie fortfahren?");
+  
+  // Wenn der Benutzer "OK" klickt, weiter zur Neuanmeldeseite
+  if (userConfirmed) {
+    window.location.href = "../../Startseite/Startseite.html"; // Hier den tatsächlichen Pfad zur Neuanmeldeseite angeben
+  }
+});
+
+// QR-Code für Lagerbestandsseite generieren
 const generateQRCode = () => {
   const qrCodeContainer = document.getElementById("qrcode");
+  const lagerBestandsURL = "https://example.com/lagerbestand"; // URL zur Lagerbestandsseite
 
-  // Entferne alten QR-Code
-  qrCodeContainer.innerHTML = "";
-
-  // Generiere neuen QR-Code
+  qrCodeContainer.innerHTML = ""; // Entferne alten QR-Code
   new QRCode(qrCodeContainer, {
     text: lagerBestandsURL,
     width: 200,
     height: 200,
   });
 
-  // Aktualisiere Zeitstempel
   const timestamp = new Date();
   updateTimestamp(timestamp);
 };
@@ -41,31 +55,60 @@ document.getElementById("regenButton").addEventListener("click", () => {
   generateQRCode();
 });
 
-// Login-Handling
+// Initialisieren der QR-Code-Funktionalität
+window.onload = startQRCodeTimer;
+
+// Funktion zur Handhabung des Login-Formulars
 function handleLogin(event) {
   event.preventDefault();
 
-  // Abrufen von Eingaben
   const enteredPersonalnummer = document.getElementById("personalnummer").value;
   const enteredPassword = document.getElementById("login-password").value;
 
-  // Abrufen von gespeicherten Daten (Simulation)
+  // Abrufen der gespeicherten Personalnummer und Passwort aus localStorage
   const storedPersonalnummer = localStorage.getItem("personalnummer");
   const storedPassword = localStorage.getItem("loginPassword");
 
-  // Überprüfung der Daten
   if (
     enteredPersonalnummer === storedPersonalnummer &&
     enteredPassword === storedPassword
   ) {
     alert("Login erfolgreich! Willkommen zur Sicherheitsapp.");
-    window.location.href = "../Lagerbestand.html"; // Weiterleitung zur Lagerbestandsseite
+    window.location.href = "../Lagerbestand.html"; // Weiterleitung zur Startseite
   } else {
     alert("Ungültige Anmeldedaten. Bitte versuchen Sie es erneut.");
   }
 }
 
-// Initialisierung beim Laden der Seite
-window.onload = () => {
-  startQRCodeTimer();
-};
+// Funktion zum Handhaben von "Passwort vergessen"
+function handleForgotPassword() {
+  alert("Bitte generieren Sie ein neues Passwort und erstellen Sie ein neues.");
+  
+  // Zeige das Formular zur Passwortgenerierung
+  document.getElementById("password-reset-form").style.display = "block";
+
+  // Generiere ein neues Passwort
+  const newGeneratedPassword = Math.random().toString(36).slice(-8);
+  document.getElementById("generated-password").value = newGeneratedPassword;
+}
+
+// Funktion zum Zurücksetzen des Passworts
+function resetPassword(event) {
+  event.preventDefault();
+
+  const newPassword = document.getElementById("new-password").value;
+  const confirmPassword = document.getElementById("confirm-password").value;
+
+  if (newPassword !== confirmPassword) {
+    alert("Die Passwörter stimmen nicht überein. Bitte erneut eingeben.");
+    return;
+  }
+
+  // Speichere das neue Passwort im localStorage
+  const personalnummer = document.getElementById("personalnummer").value;
+  localStorage.setItem("personalnummer", personalnummer);
+  localStorage.setItem("loginPassword", newPassword);
+
+  alert("Ihr neues Passwort wurde erfolgreich erstellt!");
+  window.location.href = "../Lagerbestand.html"; // Weiterleitung nach erfolgreichem Reset
+}

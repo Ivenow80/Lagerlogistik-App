@@ -2,7 +2,7 @@
 html, body {
     height: 100%;
     margin: 0;
-    background-color: #f5f3c1; /* Hintergrundfarbe */
+    background-color: #f1e6b4; /* Hintergrundfarbe */
     font-family: Arial, sans-serif;
   }
   .container {
@@ -26,7 +26,7 @@ html, body {
   
   .ueberschrift {
     text-align: center;
-    color: #4b6e7c;
+    color: #1e7289;
   }
   
   .tbcontainer {
@@ -84,7 +84,7 @@ html, body {
     }
   
     button {
-      width: 80%; /* Button auf kleineren Geräten anpassen */
+      width: 25%; /* Button auf kleineren Geräten anpassen */
     }
   }
   

@@ -60,6 +60,7 @@ function saveNewPassword(event) {
 // Funktion für "Passwort vergessen"
 function forgotPassword() {
     alert("Bitte generieren Sie ein Einmalpasswort und erstellen Sie ein neues Passwort.");
-    // Optionale Weiterleitung zu einer Passwort-Wiederherstellungsseite:
-    // window.location.href = "passwort-wiederherstellung.html";
+    
+    // Zeigt den Einmalpasswort-Generierungsbereich an
+    document.getElementById('generated-password').style.display = 'block';
 }

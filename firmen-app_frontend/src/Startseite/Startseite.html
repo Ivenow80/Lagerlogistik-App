@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-      
+        /* Fügen Sie hier CSS-Stile hinzu, falls erforderlich */
     </style>
     <title>Passwort-Management</title>
     <link rel="stylesheet" href="./Startseite.css" class="style"> <!-- Optional, falls CSS benötigt wird -->
@@ -14,7 +14,7 @@
     <div class="app-container">
         <!-- Firmenlogo -->
         <div class="logo_aktuell">
-            <img src="../Logo/logo_aktuell.png" alt="Logo"  class="logo_aktuell"/>
+            <img src="../Logo/logo_aktuell.png" alt="Logo" class="logo_aktuell"/>
         </div>
 
         <h1>Erstanmeldung</h1>
@@ -66,7 +66,6 @@
 
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script> <!-- QR-Code Bibliothek -->
     <script>
         // Funktion zum Generieren eines Einmalpassworts
         function generateOneTimePassword() {
@@ -130,8 +129,9 @@
         // Funktion für "Passwort vergessen"
         function forgotPassword() {
             alert("Bitte generieren Sie ein Einmalpasswort und erstellen Sie ein neues Passwort.");
-            // Optionale Weiterleitung zu einer Passwort-Wiederherstellungsseite:
-            // window.location.href = "passwort-wiederherstellung.html";
+            
+            // Zeigt den Einmalpasswort-Generierungsbereich an
+            document.getElementById('generated-password').style.display = 'block';
         }
     </script>
 </body>
