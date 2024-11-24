@@ -1,135 +1,82 @@
-/* Allgemeine Stile */
-/* Allgemeine Reset-Stile für den Browser */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
+/* Tabellenstile */
 body {
   font-family: Arial, sans-serif;
-  line-height: 1.6;
-  background-color: #f4f4f4;
-  padding: 20px;
+  background-color: #f1e6b4;
+  color: #1e7289;
+  margin: 0;
+  padding: 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
 }
 
-/* Überschrift */
-h1 {
-  text-align: center;
-  color: #333;
-  margin-bottom: 30px;
-}
-
-/* Formular Container */
-#dataForm {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  max-width: 800px;
-  margin: 0 auto 30px auto;
-}
-
-label {
-  display: block;
-  margin: 10px 0 5px;
-  font-weight: bold;
-  color: #333;
-}
-
-input[type="text"],
-input[type="number"],
-input[type="date"],
-input[type="checkbox"] {
+table {
   width: 100%;
-  padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  font-size: 1rem;
+  border-collapse: collapse;
+  margin: 4px 0; /* Noch weniger Außenabstand */
+  background-color: #bccfd8;
+  border-radius: 10px;
+  box-shadow: 0 0 9px rgba(0, 0, 0, 0.1); /* Noch leichterer Schatten */
+  font-size: 0.6rem; /* Kleinere Schriftgröße */
+  overflow-x: auto; /* Für horizontales Scrollen bei kleinen Bildschirmen */
 }
 
-input[type="checkbox"] {
-  width: auto;
-  margin-top: 10px;
+th, td {
+  text-align: left;
+  padding: 2px 6px; /* Reduziertes Padding */
+  border: 1px solid #ac2525;
+}
+ button
+th {
+  background-color: #1e7289;
+  color: rgb(248, 246, 246);
+  font-weight: bold;
+  font-size: 0.65rem; /* Noch kleinere Schriftgröße für die Überschrift */
+  text-transform: uppercase; /* Überschriften in Großbuchstaben */
 }
 
-/* Platzhalter text anpassen */
-input::placeholder {
-  color: #888;
+td {
+  color: #333;
+  font-size: 0.9rem; /* Einheitlich kleinere Schriftgröße */
+  font-weight: bold; /* Starke Schrift */
 }
 
-/* Buttons Container */
-.buttons {
-  text-align: center;
-  margin-top: 30px;
+/* Kleinere Tabellenbreite */
+#tableContainer {
+  max-width: 250px; /* Noch schmalere Tabelle */
+  margin: 0 auto; /* Zentriert die Tabelle */
+  padding: 2px; /* Reduzierter Innenabstand */
 }
 
-button {
-  background-color: #4CAF50;
-  color: white;
-  padding: 10px 20px;
-  margin: 10px;
-  border: none;
-  border-radius: 5px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-button:hover {
-  background-color: #45a049;
-}
-
-button:focus {
-  outline: none;
-}
-
-/* Dynamische Felder */
-#inputContainer {
-  margin-top: 30px;
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-/* Eingabefelder für dynamische Felder */
-.entry {
-  margin-bottom: 20px;
-}
-
-.entry label {
-  display: inline-block;
-  width: 150px;
-  font-weight: normal;
-}
-
-.entry input[type="text"],
-.entry input[type="number"] {
-  width: calc(100% - 160px);
-}
-
-/* Responsive Design */
+/* Responsive Design für Tabellen */
 @media (max-width: 768px) {
-  body {
-      padding: 10px;
+  table {
+    font-size: 0.55rem; /* Noch kleinere Schriftgröße für Mobilgeräte */
   }
 
-  #dataForm {
-      width: 100%;
-      padding: 10px;
+  th, td {
+    padding: 2px 3px; /* Minimaleres Padding für kleine Bildschirme */
   }
 
-  button {
-      width: 100%;
-      padding: 15px;
-      font-size: 1.1rem;
+  #tableContainer {
+    max-width: 100%; /* Volle Breite auf kleinen Geräten */
   }
+}
 
-  .entry input[type="text"],
-  .entry input[type="number"] {
-      width: 100%;
-      margin-top: 10px;
-  }
+/* Logo-Stile */
+#logoContainer {
+  display: flex;
+  justify-content: center; /* Zentriert das Logo horizontal */
+  align-items: center; /* Zentriert vertikal, falls nötig */
+  height: auto;
+  width: 100%;
+  margin-bottom: 10px; /* Abstand unter dem Logo */
+}
+
+#logoContainer img {
+  max-width: 70px; /* Noch kleinere maximale Breite des Logos */
+  height: auto; /* Proportionale Höhe beibehalten */
+  border-radius: 5px; /* Optionale Abrundung für ein moderneres Design */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5); /* Noch leichterer Schatten */
 }

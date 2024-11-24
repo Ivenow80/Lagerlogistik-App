@@ -18,7 +18,7 @@
 
     <!-- Logout-Button -->
     <div class="logout-container" style="text-align: right; margin: 10px;">
-      <button type="button" id="logoutButton" onclick="logout()">Logout</button>
+      <button type="button" id="logoutButton">Logout</button>
     </div>
 
     <!-- Farbauswahl -->
@@ -29,7 +29,7 @@
       <label for="textColorPicker" style="margin-left: 20px;">Textfarbe auswählen:</label>
       <input type="color" id="textColorPicker" name="textColorPicker">
 
-      <button type="button" id="applyColorsButton" onclick="applyColors()">Farben anwenden</button>
+      <button type="button" id="applyColorsButton">Farben anwenden</button>
     </div>
 
     <!-- Formular -->
@@ -74,33 +74,15 @@
       </table>
     </div>
 
-    <button type="button" id="speichernButton" onclick="speichern()">Speichern</button>
+    <!-- Buttons -->
+    <button type="button" id="speichernButton">Speichern</button>
+    <button type="button" id="zurueckButton">Zurück</button>
+    "
   </div>
 
   <!-- Verlinkung zur externen JavaScript-Datei -->
   <script src="Lagertabelle.js"></script>
   <script src="speichern.js"></script>
-  <script>
-    // Funktion für den Logout-Button
-    function logout() {
-      alert("Sie haben sich erfolgreich ausgeloggt.");
-      window.location.href = "../Loginseite_Lager/Loginseite_Lager.html"; // Weiterleitung zur Loginseite
-    }
-
-    // Funktion zum Anwenden der Farbauswahl
-    function applyColors() {
-      // Hole die ausgewählten Farben
-      const backgroundColor = document.getElementById('backgroundColorPicker').value;
-      const textColor = document.getElementById('textColorPicker').value;
-
-      // Wende die Farben auf die Tabelle an
-      const table = document.querySelector('.lagerbestand table');
-      table.style.backgroundColor = backgroundColor;
-      table.style.color = textColor;
-
-      // Optional: Informiere den Nutzer über die Farbänderung
-      alert("Farben wurden angewendet!");
-    }
-  </script>
+  <script src="Lagerbestand.js"></script>
 </body>
 </html>

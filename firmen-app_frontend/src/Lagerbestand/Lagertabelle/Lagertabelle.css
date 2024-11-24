@@ -1,90 +1,74 @@
 /* Grundlegendes Layout */
 html, body {
-    height: 100%;
-    margin: 0;
-    background-color: #f1e6b4; /* Hintergrundfarbe */
-    font-family: Arial, sans-serif;
-  }
-  .container {
-    max-width: 1200px;
-    margin: 2px auto;
-    padding: 20px;
-    background-color: white;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-  }
- 
-  .lagerbestend {
-    max-width: 1200px;
-    margin: 20px auto;
-    padding: 10px;
-    background-color: white;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-  }
-  
-  
-  .ueberschrift {
-    text-align: center;
-    color: #1e7289;
-  }
-  
-  .tbcontainer {
-    margin-top: 20px;
-    text-align: center;
-  }
-  
-  /* Anpassungen für die Tabelle */
+  height: 100%;
+  margin: 0;
+  background-color: #f1e6b4; /* Hintergrundfarbe */
+  font-family: Arial, sans-serif;
+}
+
+
+.ueberschrift {
+  text-align: center;
+  color: #1e7289;
+}
+
+.tbcontainer {
+  margin-top: 20px;
+  text-align: center;
+}
+
+/* Tabelle */
+table.tg {
+  margin: 20px auto; /* Tabelle zentrieren */
+  border-collapse: collapse; /* Entfernt doppelte Ränder */
+  width: 100%; /* Tabelle auf gesamte Breite anpassen */
+  max-width: 100%; /* Maximale Breite an die Seite anpassen */
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Reduzierter Schatteneffekt */
+}
+
+th, td {
+  border: 1px solid #333; /* Border für Zellen */
+  padding: 8px; /* Kompaktes Padding */
+  text-align: left;
+  font-size: 12px; /* Kleinere Schriftgröße */
+}
+
+th {
+  background-color: #4b6e7c;
+  color: white;
+}
+
+td {
+  background-color: #fcfcf9;
+}
+
+/* Buttons */
+button {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  background-color: #4b6e7c;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #3e5c63;
+}
+
+/* Responsivität */
+@media (max-width: 768px) {
   table.tg {
-    margin: 2px ; /* Tabelle mittig ausrichten */
-    border-collapse: collapse; /* Entfernt doppelte Ränder */
-    width: 5%;
-    padding: 1px;
-    max-width: 900px; /* Maximale Breite der Tabelle */
+    width: 100%; /* Tabelle bleibt auf voller Breite */
   }
-  
+
   th, td {
-    border: 1px solid #333; /* Border für Zellen */
-    padding: 10px;
-    text-align: left;
+    font-size: 10px; /* Kleinere Schriftgröße auf mobilen Geräten */
+    padding: 6px; /* Kompaktes Padding */
   }
-  
-  th {
-    background-color: #4b6e7c;
-    color: white;
-  }
-  
-  td {
-    background-color: #f5f3c1;
-  }
-  
+
   button {
-    display: block;
-    margin: 20px auto;
-    padding: 10px 20px;
-    background-color: #4b6e7c;
-    color: white;
-    border: none;
-    cursor: pointer;
+    width: 80%; /* Buttons schmaler machen */
   }
-  
-  button:hover {
-    background-color: #3e5c63;
-  }
-  
-  /* Weitere Anpassungen für Responsivität */
-  @media (max-width: 768px) {
-    table.tg {
-      width: 100%; /* Tabelle bei kleineren Bildschirmen auf 100% Breite */
-    
-    }
-  
-    th, td {
-      font-size: 1px; /* Kleinere Schriftgröße auf kleinen Geräten */
-    }
-  
-    button {
-      width: 25%; /* Button auf kleineren Geräten anpassen */
-    }
-  }
-  
+}
