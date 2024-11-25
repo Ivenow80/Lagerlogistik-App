@@ -1,74 +1,90 @@
-/* Grundlegendes Layout */
-html, body {
-  height: 100%;
-  margin: 0;
-  background-color: #f1e6b4; /* Hintergrundfarbe */
+body {
   font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  color: #333;
+  margin: 20px;
 }
 
-
-.ueberschrift {
-  text-align: center;
-  color: #1e7289;
-}
-
-.tbcontainer {
+table {
+  border-collapse: collapse;
+  width: 70%; /* Reduziert die Breite der Tabelle weiter */
   margin-top: 20px;
-  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-/* Tabelle */
-table.tg {
-  margin: 20px auto; /* Tabelle zentrieren */
-  border-collapse: collapse; /* Entfernt doppelte Ränder */
-  width: 100%; /* Tabelle auf gesamte Breite anpassen */
-  max-width: 100%; /* Maximale Breite an die Seite anpassen */
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Reduzierter Schatteneffekt */
+table, th, td {
+  border: 1px solid #ddd;
 }
 
 th, td {
-  border: 1px solid #333; /* Border für Zellen */
-  padding: 8px; /* Kompaktes Padding */
+  padding: 4px; /* Weitere Reduzierung des Zellabstands */
   text-align: left;
-  font-size: 12px; /* Kleinere Schriftgröße */
+  font-size: 11px; /* Noch kleinere Schriftgröße */
 }
 
 th {
-  background-color: #4b6e7c;
-  color: white;
+  background-color: #f4f4f4;
+  font-weight: bold;
 }
 
-td {
-  background-color: #fcfcf9;
+input[type="text"], 
+input[type="number"], 
+input[type="date"] {
+  padding: 5px; /* Weitere Reduzierung der Innenabstände */
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  width: 160px; /* Noch kleinere Eingabefelder */
+  margin-bottom: 6px;
+  margin-right: 8px;
+  box-sizing: border-box;
 }
 
-/* Buttons */
 button {
-  display: block;
-  margin: 20px auto;
-  padding: 10px 20px;
-  background-color: #4b6e7c;
-  color: white;
+  background-color: #007bff;
+  color: #fff;
+  padding: 6px 12px; /* Kleinere Schaltflächen */
   border: none;
+  border-radius: 5px;
   cursor: pointer;
+  margin: 6px 0;
+  font-size: 12px;
 }
 
 button:hover {
-  background-color: #3e5c63;
+  background-color: #0056b3;
 }
 
-/* Responsivität */
-@media (max-width: 768px) {
-  table.tg {
-    width: 100%; /* Tabelle bleibt auf voller Breite */
-  }
+h1 {
+  color: #444;
+  margin-bottom: 20px;
+  text-align: center;
+}
 
-  th, td {
-    font-size: 10px; /* Kleinere Schriftgröße auf mobilen Geräten */
-    padding: 6px; /* Kompaktes Padding */
-  }
+form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: center; /* Zentriert das Formular */
+}
 
-  button {
-    width: 80%; /* Buttons schmaler machen */
-  }
+form label {
+  flex-basis: 100%;
+}
+
+form input {
+  flex-basis: 48%;
+}
+
+form button {
+  align-self: flex-start;
+}
+
+#dataTable {
+  margin-top: 30px;
+}
+
+#saveButton {
+  display: block;
+  margin: 20px auto;
 }
