@@ -1,7 +1,5 @@
 {
   "dependencies": {
-    "mariadb": "^3.4.0",
-    "myql": "^1.0.0",
-    "mysql": "^2.18.1"
+    "express": "^4.21.1"
   }
 }

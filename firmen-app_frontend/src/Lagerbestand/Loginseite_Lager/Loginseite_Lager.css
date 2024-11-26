@@ -1,6 +1,6 @@
 /* Allgemeines Styling */
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', sans-serif;
   background-color: #f1e6b4;
   color: #333;
   margin: 0;
@@ -15,7 +15,7 @@ body {
 /* App-Container */
 .app-container {
   text-align: center;
-  background: #aec9ba;
+  background-color: #4B6E7C; /* Grün-blauer Hintergrund */
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -24,21 +24,21 @@ body {
 }
 
 /* Firmenlogo */
-.logo_neu.img {
+.logo_neu img {
   max-width: 100px;
   margin-bottom: 20px;
 }
 
 /* Überschriften */
 h1 {
-  font-size: 24px;
-  color: #1a6c56;
-  margin: 10px 0;
+  font-size: 1.8rem;
+  color: #333;
+  margin-bottom: 20px;
 }
 
 h2 {
   font-size: 18px;
-  color: #912727;
+  color: #912727; /* Rotes Element für Hervorhebung */
   margin-bottom: 20px;
 }
 
@@ -66,17 +66,19 @@ h3 {
 
 /* Button */
 button {
-  background-color:rgb(199, 121, 66);
+  background-color: rgb(199, 121, 66); /* Orange Farbton */
   color: rgb(30, 22, 22);
   border: none;
   padding: 10px 15px;
   font-size: 14px;
-  border-radius: 5px;
+  border-radius: 50px; /* Abgerundete Ecken */
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 button:hover {
-  background-color: #1d7a94;
+  background-color: #f1e6b4;
+  border-radius: 80px;
 }
 
 /* Formular */
@@ -90,17 +92,18 @@ form input[type="text"],
 form input[type="password"] {
   width: 100%;
   padding: 10px;
-  border: 1px solid #201919;
-  border-radius: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
 }
 
 form input[type="submit"] {
-  background-color: #28a745;
+  background-color: #28a745; /* Grün für den Submit-Button */
   color: rgb(5, 3, 3);
   border: none;
   padding: 10px;
   font-size: 14px;
-  border-radius: 5px;
+  border-radius: 50px;
   cursor: pointer;
 }
 
@@ -108,11 +111,23 @@ form input[type="submit"]:hover {
   background-color: #f1e6b4;
 }
 
+/* Eingabefeld für generiertes Passwort */
+#generated-password {
+  background-color: #f9f9f9;
+  padding: 10px;
+  margin-top: 10px;
+  border: 1px solid #ddd;
+  border-radius: 80px;
+  display: none;
+}
+
 /* Link */
 a {
   font-size: 14px;
   color: #007bff;
   text-decoration: none;
+  margin-top: 10px;
+  display: inline-block;
 }
 
 a:hover {

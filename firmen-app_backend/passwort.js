@@ -1,1 +1,0 @@
-App.post('/api/passwort')

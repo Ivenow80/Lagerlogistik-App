@@ -91,7 +91,7 @@
       // QR-Code für Lagerbestandsseite generieren
       const generateQRCode = () => {
         const qrCodeContainer = document.getElementById("qrcode");
-        const lagerBestandsURL = "https://example.com/lagerbestand"; // URL zur Lagerbestandsseite
+        const lagerBestandsURL = "https://http://127.0.0.1:5500/firmen-app_frontend/src/Lagerbestand/Lagerbestand.html"; // URL zur Lagerbestandsseite
 
         qrCodeContainer.innerHTML = ""; // Entferne alten QR-Code
         new QRCode(qrCodeContainer, {

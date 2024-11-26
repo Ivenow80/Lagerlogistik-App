@@ -23,7 +23,10 @@ function handleLogin(event) {
             personalnummer: document.getElementById('otp-personalnummer').value,
             message: 'Bitte erstellen Sie ein neues Passwort!'
         };
-        
+
+        // Speichern von Benutzername und Personalnummer im localStorage
+        localStorage.setItem('userInfo', JSON.stringify(userInfo));
+
         // Zeigt die Benutzerinformationen und die Nachricht an
         document.getElementById('user-info-message').innerText = 
             `Benutzername: ${userInfo.username}\nPersonalnummer: ${userInfo.personalnummer}\nNachricht: ${userInfo.message}`;
@@ -39,18 +42,26 @@ function saveNewPassword(event) {
     event.preventDefault();
     const newPassword = document.getElementById('new-password').value;
     const confirmPassword = document.getElementById('confirm-password').value;
-    const personalNumber = document.getElementById('otp-personalnummer').value;
 
     if (newPassword !== confirmPassword) {
         alert('Die Passwörter stimmen nicht überein. Bitte erneut eingeben.');
         return;
     }
 
-    // Speichern der Personalnummer und des neuen Passworts im localStorage
-    localStorage.setItem('personalnummer', personalNumber);
-    localStorage.setItem('loginPassword', newPassword);
+    // Laden der gespeicherten Benutzerinformationen
+    const userInfo = JSON.parse(localStorage.getItem('userInfo'));
+    if (!userInfo) {
+        alert('Fehler: Benutzerinformationen konnten nicht gefunden werden.');
+        return;
+    }
 
-    console.log(`Passwort für Mitarbeiter mit Personalnummer ${personalNumber} gespeichert: ${newPassword}`);
+    // Hinzufügen des neuen Passworts zu den Benutzerinformationen
+    userInfo.password = newPassword;
+
+    // Aktualisieren der Daten im localStorage
+    localStorage.setItem('userInfo', JSON.stringify(userInfo));
+
+    console.log(`Passwort für Mitarbeiter ${userInfo.username} (Personalnummer: ${userInfo.personalnummer}) gespeichert.`);
     alert('Neues Passwort erfolgreich gespeichert!');
 
     // Weiterleitung zur Login-Seite
