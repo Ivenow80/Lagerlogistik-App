@@ -10,54 +10,52 @@ document.addEventListener("DOMContentLoaded", function () {
     const formData = new FormData(form);
     const row = document.createElement("tr");
 
-    let formValues = {};
+    // Formulardaten durchlaufen und in die Tabelle einfügen
     formData.forEach((value, key) => {
-      formValues[key] = value;
       const cell = document.createElement("td");
       const input = document.createElement("input");
       input.type = "text";
       input.value = value;
+      input.disabled = true;  // Eingabefelder in der Tabelle nur als Anzeige (nicht bearbeitbar)
       cell.appendChild(input);
       row.appendChild(cell);
     });
 
-    // Berechne den Wert des Lagers
-    const wertLager =
-      parseFloat(formValues.preisproeinheitInput) *
-      parseInt(formValues.lagerbestandInput || 0);
+    // Berechne den Wert des Lagers (lagerbestand * preisproeinheit)
+    const lagerbestand = parseFloat(formData.get("lagerbestandInput"));
+    const preisProEinheit = parseFloat(formData.get("preisproeinheitInput"));
+    const wertLager = lagerbestand * preisProEinheit;
     const lagerWertCell = document.createElement("td");
     const lagerWertInput = document.createElement("input");
     lagerWertInput.type = "text";
-    lagerWertInput.value = wertLager.toFixed(2);
+    lagerWertInput.value = wertLager.toFixed(2);  // Formatierung auf 2 Dezimalstellen
+    lagerWertInput.disabled = true;  // Eingabefeld nicht bearbeitbar
     lagerWertCell.appendChild(lagerWertInput);
     row.appendChild(lagerWertCell);
 
-    // Füge eine Löschen-Schaltfläche hinzu
+    // Löschen-Schaltfläche hinzufügen
     const deleteCell = document.createElement("td");
     const deleteButton = document.createElement("button");
-    deleteButton.textContent = "Löschen";
-    deleteButton.style.backgroundColor = "#ff4d4d";
-    deleteButton.style.color = "#fff";
-    deleteButton.style.border = "none";
-    deleteButton.style.borderRadius = "5px";
-    deleteButton.style.cursor = "pointer";
-    deleteButton.style.padding = "5px 10px";
+    deleteButton.textContent = "Zeile löschen";
     deleteButton.addEventListener("click", () => {
       row.remove();
       updateLocalStorage();  // Update LocalStorage nach dem Löschen einer Zeile
+      alert("Zeile gelöscht");
     });
     deleteCell.appendChild(deleteButton);
     row.appendChild(deleteCell);
 
     tableBody.appendChild(row);
 
-    // Speichern der neuen Daten im LocalStorage
-    const savedData = loadTableDataFromStorage();
-    savedData.push(formValues);
-    localStorage.setItem("tableData", JSON.stringify(savedData));
-
     // Formular zurücksetzen
     form.reset();
+
+    // Speichern der neuen Daten im LocalStorage
+    const savedData = loadTableDataFromStorage();
+    savedData.push(Object.fromEntries(formData));
+    localStorage.setItem("tableData", JSON.stringify(savedData));
+
+    updateLocalStorage(); // Sicherstellen, dass die Daten im LocalStorage nach dem Hinzufügen gespeichert werden
   });
 
   // Funktion für den Speichern-Button
@@ -70,12 +68,27 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log("Gespeicherte Daten:", data);
     alert("Daten wurden gespeichert! (siehe Konsole)");
   });
-   // Funktion zum Laden von gespeicherten Daten aus dem LocalStorage
-   function loadTableDataFromStorage() {
+
+  // Funktion zum Laden von gespeicherten Daten aus dem LocalStorage
+  function loadTableDataFromStorage() {
     const savedData = localStorage.getItem("tableData")
       ? JSON.parse(localStorage.getItem("tableData"))
       : [];
     return savedData;
+  }
+
+  // Funktion zum Aktualisieren des LocalStorage nach jeder Änderung
+  function updateLocalStorage() {
+    const rows = Array.from(tableBody.querySelectorAll("tr"));
+    const data = rows.map((row) => {
+      const cells = row.querySelectorAll("input");
+      const rowData = {};
+      cells.forEach((cell, index) => {
+        rowData[`column${index}`] = cell.value;
+      });
+      return rowData;
+    });
+    localStorage.setItem("tableData", JSON.stringify(data));
   }
 
   // Lade die Tabelle beim Laden der Seite
@@ -90,36 +103,19 @@ document.addEventListener("DOMContentLoaded", function () {
         const input = document.createElement("input");
         input.type = "text";
         input.value = formValues[key];
-        input.disabled = true; // Eingabefeld für angezeigte Daten
+        input.disabled = true;  // Eingabefelder in der Tabelle nur als Anzeige (nicht bearbeitbar)
         cell.appendChild(input);
         row.appendChild(cell);
       });
 
-      // Berechne den Wert des Lagers
-      const wertLager =
-        parseFloat(formValues.preisproeinheitInput) *
-        parseInt(formValues.lagerbestandInput || 0);
-      const lagerWertCell = document.createElement("td");
-      const lagerWertInput = document.createElement("input");
-      lagerWertInput.type = "text";
-      lagerWertInput.value = wertLager.toFixed(2);
-      lagerWertInput.disabled = true; // Wert des Lagers als Text anzeigen
-      lagerWertCell.appendChild(lagerWertInput);
-      row.appendChild(lagerWertCell);
-
       // Löschen-Schaltfläche hinzufügen
       const deleteCell = document.createElement("td");
       const deleteButton = document.createElement("button");
-      deleteButton.textContent = "Löschen";
-      deleteButton.style.backgroundColor = "#ff4d4d";
-      deleteButton.style.color = "#fff";
-      deleteButton.style.border = "none";
-      deleteButton.style.borderRadius = "5px";
-      deleteButton.style.cursor = "pointer";
-      deleteButton.style.padding = "5px 10px";
+      deleteButton.textContent = "Zeile löschen";
       deleteButton.addEventListener("click", () => {
         row.remove();
-        updateLocalStorage();
+        updateLocalStorage();  // Update LocalStorage nach dem Löschen einer Zeile
+        alert("Zeile gelöscht");
       });
       deleteCell.appendChild(deleteButton);
       row.appendChild(deleteCell);
@@ -128,27 +124,5 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Funktion zur Aktualisierung des LocalStorage
-  function updateLocalStorage() {
-    const rows = Array.from(tableBody.querySelectorAll("tr"));
-    const data = rows.map((row) => {
-      const cells = row.querySelectorAll("input");
-      const rowData = {};
-      Array.from(cells).forEach((cell, index) => {
-        const input = cell.querySelector("input");
-        rowData[form.elements[index].name] = input.value;
-      });
-      return rowData;
-    });
-
-    localStorage.setItem("tableData", JSON.stringify(data));
-  }
-
-  // Lade die Tabelle beim Laden der Seite
-  loadTableData();
-
-  // Funktion für den "Zurück"-Button
-  backButton.addEventListener("click", () => {
-    alert("Einen Schritt zurück");
-  });
+  loadTableData(); // Tabelle beim Laden der Seite mit gespeicherten Daten füllen
 });
