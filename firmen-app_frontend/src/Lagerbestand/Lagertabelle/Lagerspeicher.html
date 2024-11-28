@@ -3,73 +3,53 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lagerspeicher</title>
-  <link rel="stylesheet" href="./Lagerspeicher.css">
- 
+  <title>Lagerdaten - Einzelne Zellinhalte Löschen</title>
+  <link rel="stylesheet" href="Lagerspeicher.css">
 </head>
 <body>
   <div class="app-container">
     <!-- Firmenlogo -->
     <div class="logo_aktuell">
-      <img src="../../Logo/logo_aktuell.png" alt="logo" />
+      <img src="../../Logo/logo_aktuell.png" alt="Logo">
     </div>
 
-  <h1>Gespeicherte Lagerdaten</h1>
-  <table id="lagerTable">
-    <thead>
-      <tr>
-        <th>Position</th>
-        <th>Artikelnummer</th>
-        <th>Artikel-Bezeichnung</th>
-        <th>Lager</th>
-        <th>Lagerplatz</th>
-        <th>Lagerbestand</th>
-        <th>Waren-Entnahme</th>
-        <th>Ware hinzugefügt</th>
-        <th>Einheit</th>
-        <th>Preis pro Einheit</th>
-        <th>Wert Lagerbestand</th>
-        <th>Mindestmenge</th>
-        <th>Nachbestellen</th>
-        <th>Minimale Bestellmenge</th>
-        <th>Lieferant</th>
-        <th>Bestellmenge</th>
-        <th>Nachbestellt am</th>
-        <th>Lieferzeit</th>
-        <th>Mitarbeiter</th>
-        <th>Personalnummer</th>
-      </tr>
-    </thead>
-    <tbody>
-      <!-- Daten werden hier dynamisch eingefügt -->
-    </tbody>
-  </table>
-  <button class="btn" onclick="zurück()">Zurück</button>
-  <script>
-    // Funktion zum Laden der gespeicherten Daten aus dem localStorage
-    function loadData() {
-      const savedData = localStorage.getItem('tableData') ? JSON.parse(localStorage.getItem('tableData')) : [];
-      const tableBody = document.querySelector('#lagerTable tbody');
-      tableBody.innerHTML = ''; // Tabelle leeren, falls bereits Daten vorhanden sind
+    <h1>Gespeicherte Lagerdaten</h1>
+    <table id="lagerTable">
+      <thead>
+        <tr>
+          <th>Position</th>
+          <th>Artikelnummer</th>
+          <th>Artikel-Bezeichnung</th>
+          <th>Lager</th>
+          <th>Lagerplatz</th>
+          <th>Lagerbestand</th>
+          <th>Waren-Entnahme</th>
+          <th>Ware hinzugefügt</th>
+          <th>Einheit</th>
+          <th>Preis pro Einheit</th>
+          <th>Wert Lagerbestand</th>
+          <th>Mindestmenge</th>
+          <th>Nachbestellen</th>
+          <th>Minimale Bestellmenge</th>
+          <th>Lieferant</th>
+          <th>Bestellmenge</th>
+          <th>Nachbestellt am</th>
+          <th>Lieferzeit</th>
+          <th>Mitarbeiter</th>
+          <th>Personalnummer</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Dynamische Daten werden hier geladen -->
+      </tbody>
+    </table>
+    <div class="buttons">
+      <button class="btn" onclick="zurück()">Zurück</button>
+      <button onclick="löschen()">Löschen</button>
+    </div>
+  </div>
 
-      savedData.forEach(data => {
-        const row = document.createElement('tr');
-        Object.values(data).forEach(value => {
-          const cell = document.createElement('td');
-          cell.textContent = value;
-          row.appendChild(cell);
-        });
-        tableBody.appendChild(row);
-      });
-    }
-
-    // Funktion zum Zurückkehren zur Lagerverwaltung
-    function zurück() {
-      window.location.href = "../Loginseite_Lager/Loginseite_Lager.html";
-    }
-
-    // Lade die Daten beim Laden der Seite
-    window.onload = loadData;
-  </script>
+  <!-- JavaScript-Datei einbinden -->
+  <script src="Lagerspeicher.js"></script>
 </body>
 </html>

@@ -1,10 +1,11 @@
-/* Allgemeine Stile */
+/* Einheitliches Box-Modell für alle Elemente */
 *,
 *::before,
 *::after {
   box-sizing: border-box; /* Einheitliches Box-Modell */
 }
 
+/* Allgemeine Stile */
 body {
   font-family: Arial, sans-serif;
   margin: 20px;
@@ -16,6 +17,7 @@ h1 {
   text-align: center;
   font-size: 32px;
   margin-bottom: 20px;
+  color: #333;
 }
 
 /* Formular-Stile */

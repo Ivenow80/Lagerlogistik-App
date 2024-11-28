@@ -1,18 +1,14 @@
 // Event-Listener für den Haupt-Zurück-Button
 document.getElementById("backButtonMain").addEventListener("click", () => {
   const userConfirmed = confirm("Sie gehen jetzt zurück zur Neuanmeldeseite. Möchten Sie fortfahren?");
-  
-  // Wenn der Benutzer "OK" klickt, weiter zur Neuanmeldeseite
   if (userConfirmed) {
-    window.location.href = "Pfad/zur/Neuanmeldeseite.html"; // Hier den tatsächlichen Pfad zur Neuanmeldeseite angeben
+    window.location.href = "../../Startseite/Startseite.html"; // Hier den tatsächlichen Pfad zur Neuanmeldeseite angeben
   }
 });
 
 // Event-Listener für den Zurück-Button im Passwort-Reset-Formular
 document.getElementById("backButton").addEventListener("click", () => {
   const userConfirmed = confirm("Sie gehen jetzt zurück zur Neuanmeldeseite. Möchten Sie fortfahren?");
-  
-  // Wenn der Benutzer "OK" klickt, weiter zur Neuanmeldeseite
   if (userConfirmed) {
     window.location.href = "../../Startseite/Startseite.html"; // Hier den tatsächlichen Pfad zur Neuanmeldeseite angeben
   }
@@ -46,7 +42,7 @@ const updateTimestamp = (timestamp) => {
 
 // Timer, um alle 2 Stunden den QR-Code neu zu generieren
 const startQRCodeTimer = () => {
-  generateQRCode(); // Initialer QR-Code
+  generateQRCode();
   setInterval(generateQRCode, 2 * 60 * 60 * 1000); // Alle 2 Stunden
 };
 
@@ -65,14 +61,10 @@ function handleLogin(event) {
   const enteredPersonalnummer = document.getElementById("personalnummer").value;
   const enteredPassword = document.getElementById("login-password").value;
 
-  // Abrufen der gespeicherten Personalnummer und Passwort aus localStorage
   const storedPersonalnummer = localStorage.getItem("personalnummer");
   const storedPassword = localStorage.getItem("loginPassword");
 
-  if (
-    enteredPersonalnummer === storedPersonalnummer &&
-    enteredPassword === storedPassword
-  ) {
+  if (enteredPersonalnummer === storedPersonalnummer && enteredPassword === storedPassword) {
     alert("Login erfolgreich! Willkommen zur Sicherheitsapp.");
     window.location.href = "../Lagerbestand.html"; // Weiterleitung zur Startseite
   } else {
@@ -84,10 +76,8 @@ function handleLogin(event) {
 function handleForgotPassword() {
   alert("Bitte generieren Sie ein neues Passwort und erstellen Sie ein neues.");
   
-  // Zeige das Formular zur Passwortgenerierung
   document.getElementById("password-reset-form").style.display = "block";
 
-  // Generiere ein neues Passwort
   const newGeneratedPassword = Math.random().toString(36).slice(-8);
   document.getElementById("generated-password").value = newGeneratedPassword;
 }
@@ -104,7 +94,6 @@ function resetPassword(event) {
     return;
   }
 
-  // Speichere das neue Passwort im localStorage
   const personalnummer = document.getElementById("personalnummer").value;
   localStorage.setItem("personalnummer", personalnummer);
   localStorage.setItem("loginPassword", newPassword);

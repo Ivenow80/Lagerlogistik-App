@@ -3,92 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lagerbestand</title>
-    <link rel="stylesheet" href="Lagerbestand.css"> <!-- Verlinkung zur externen CSS-Datei -->
+    <title>Lagerformular</title>
+    <!-- Verlinkung der externen CSS-Datei -->
+    <link rel="stylesheet" href="Lagerbestand.css">
 </head>
 <body>
-    <div class="app-container">
-        <!-- Firmenlogo -->
-        <div class="logo_aktuell">
-          <img src="../Logo/logo_aktuell.png" alt="logo" />
-        </div>
 
-    <h1>Lagerbestand</h1>
+    <div class="form-container">
+        <h1>Lagerdaten Formular</h1>
 
-    <!-- Formular für statische Felder -->
-    <form id="dataForm">
-        <label for="posInput">Position:</label>
-        <input type="text" id="posInput" placeholder="Position eingeben"><br>
+        <!-- Statisches Formular -->
+        <form id="lagerForm">
+            <label for="posInput">Position:</label>
+            <input type="text" id="posInput" placeholder="Position eingeben"><br>
 
-        <label for="artikelnummerInput">Artikelnummer:</label>
-        <input type="text" id="artikelnummerInput" placeholder="Artikelnummer eingeben"><br>
+            <label for="artikelnummerInput">Artikelnummer:</label>
+            <input type="text" id="artikelnummerInput" placeholder="Artikelnummer eingeben"><br>
 
-        <label for="artikelbezeichnugInput">Artikelbezeichnung:</label>
-        <input type="text" id="artikelbezeichnugInput" placeholder="Artikelbezeichnung eingeben"><br>
+            <label for="artikelbezeichnugInput">Artikelbezeichnung:</label>
+            <input type="text" id="artikelbezeichnugInput" placeholder="Artikelbezeichnung eingeben"><br>
 
-        <label for="lagerInput">Lager:</label>
-        <input type="text" id="lagerInput" placeholder="Lager eingeben"><br>
+            <label for="lagerInput">Lager:</label>
+            <input type="text" id="lagerInput" placeholder="Lager eingeben"><br>
 
-        <label for="lagerplatzInput">Lagerplatz:</label>
-        <input type="text" id="lagerplatzInput" placeholder="Lagerplatz eingeben"><br>
+            <label for="lagerplatzInput">Lagerplatz:</label>
+            <input type="text" id="lagerplatzInput" placeholder="Lagerplatz eingeben"><br>
 
-        <label for="lagerbestandInput">Lagerbestand:</label>
-        <input type="number" id="lagerbestandInput" placeholder="Lagerbestand eingeben"><br>
+            <label for="lagerbestandInput">Lagerbestand:</label>
+            <input type="text" id="lagerbestandInput" placeholder="Lagerbestand eingeben"><br>
 
-        <label for="warenentnahmeInput">Warenentnahme:</label>
-        <input type="number" id="warenentnahmeInput" placeholder="Warenentnahme eingeben"><br>
+            <label for="warenentnahmeInput">Warenentnahme:</label>
+            <input type="text" id="warenentnahmeInput" placeholder="Warenentnahme eingeben"><br>
 
-        <label for="warehinzugefügtInput">Ware hinzugefügt:</label>
-        <input type="number" id="warehinzugefügtInput" placeholder="Hinzugefügte Ware"><br>
+            <label for="warehinzugefügtInput">Ware hinzugefügt:</label>
+            <input type="text" id="warehinzugefügtInput" placeholder="Ware hinzugefügt eingeben"><br>
 
-        <label for="einheitInput">Einheit:</label>
-        <input type="text" id="einheitInput" placeholder="Einheit eingeben"><br>
+            <label for="einheitInput">Einheit:</label>
+            <input type="text" id="einheitInput" placeholder="Einheit eingeben"><br>
 
-        <label for="preisproeinheitInput">Preis pro Einheit:</label>
-        <input type="number" id="preisproeinheitInput" placeholder="Preis pro Einheit"><br>
+            <label for="preisproeinheitInput">Preis pro Einheit:</label>
+            <input type="text" id="preisproeinheitInput" placeholder="Preis pro Einheit eingeben"><br>
 
-        <label for="mindestmengeInput">Mindestmenge:</label>
-        <input type="number" id="mindestmengeInput" placeholder="Mindestmenge"><br>
+            <label for="mindestmengeInput">Mindestmenge:</label>
+            <input type="text" id="mindestmengeInput" placeholder="Mindestmenge eingeben"><br>
 
-        <label for="nachbestellenInput">Nachbestellen:</label>
-        <input type="checkbox" id="nachbestellenInput"><br>
+            <label for="nachbestellenInput">Nachbestellen:</label>
+            <input type="checkbox" id="nachbestellenInput"><br>
 
-        <label for="minbestellmengeInput">Minimale Bestellmenge:</label>
-        <input type="number" id="minbestellmengeInput" placeholder="Mindestbestellmenge"><br>
+            <label for="minbestellmengeInput">Minimale Bestellmenge:</label>
+            <input type="text" id="minbestellmengeInput" placeholder="Minimale Bestellmenge eingeben"><br>
 
-        <label for="lieferantInput">Lieferant:</label>
-        <input type="text" id="lieferantInput" placeholder="Lieferant eingeben"><br>
+            <label for="lieferantInput">Lieferant:</label>
+            <input type="text" id="lieferantInput" placeholder="Lieferant eingeben"><br>
 
-        <label for="besttellmengeInput">Bestellmenge:</label>
-        <input type="number" id="besttellmengeInput" placeholder="Bestellmenge"><br>
+            <label for="besttellmengeInput">Bestellmenge:</label>
+            <input type="text" id="besttellmengeInput" placeholder="Bestellmenge eingeben"><br>
 
-        <label for="nachbestelltamInput">Nachbestellt am:</label>
-        <input type="date" id="nachbestelltamInput"><br>
+            <label for="nachbestelltamInput">Nachbestellt am:</label>
+            <input type="text" id="nachbestelltamInput" placeholder="Nachbestellt am eingeben"><br>
 
-        <label for="lieferzeitInput">Lieferzeit:</label>
-        <input type="number" id="lieferzeitInput" placeholder="Lieferzeit in Tagen"><br>
+            <label for="lieferzeitInput">Lieferzeit:</label>
+            <input type="text" id="lieferzeitInput" placeholder="Lieferzeit eingeben"><br>
 
-        <label for="mitarbeiterInput">Mitarbeiter:</label>
-        <input type="text" id="mitarbeiterInput" placeholder="Mitarbeitername"><br>
+            <label for="mitarbeiterInput">Mitarbeiter:</label>
+            <input type="text" id="mitarbeiterInput" placeholder="Mitarbeiter eingeben"><br>
 
-        <label for="personalnummerInput">Personalnummer:</label>
-        <input type="text" id="personalnummerInput" placeholder="Personalnummer"><br>
-    </form>
+            <label for="personalnummerInput">Personalnummer:</label>
+            <input type="text" id="personalnummerInput" placeholder="Personalnummer eingeben"><br>
 
-    <!-- Dynamischer Bereich für zusätzliche Felder -->
-    <div id="inputContainer"></div>
+           
+        </form>
 
-    <!-- Buttons zum Hinzufügen und Speichern -->
-    <div class="buttons">
-        <button type="button" onclick="hinzufuegen()">Neues Feld hinzufügen</button>
-        <button type="button" onclick="speichern()">Speichern</button>
-        <button type="button" onclick="logout()">Logout</button>
+        <!-- Container für dynamische Eingabefelder -->
+        <section id="inputContainer"></section>
+
+        <!-- Speichern-Button -->
+        <button onclick="speichern()">Daten speichern</button>
+        <button onclick="logout()">Logout</button>
+        <button onclick="löschen()">Löschen</button>
     </div>
-
-    <!-- Einbindung der externen JavaScript-Dateien -->
+    <script src="Lagertabelle.html"></script>
     <script src="Lagerbestand_.js"></script>
-    <script src="Loginseite_Lager/Loginstartseite.js"></script>
-    <script src="Lagerspeicher.js"></script>
-    <script src="Lagertabelle/Lagertabelle.js"></script>
+    <script src="Loginseite_Lager.html"></script>
 </body>
 </html>

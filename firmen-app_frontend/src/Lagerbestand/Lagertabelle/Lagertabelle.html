@@ -3,198 +3,150 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="Lagertabelle.css" /> <!-- Verlinkung zur externen CSS-Datei -->
-    <title>Lager</title>
+    <title>Bestandstabelle</title>
+    <link rel="stylesheet" href="Lagertabelle.css" />
   </head>
   <body>
-    <h1>Lager</h1>
+    <div class="app-container">
+      <!-- Firmenlogo -->
+      <div class="logo_aktuell">
+        <img src="../../Logo/logo_aktuell.png" alt="logo" />
+      </div>
 
-    <!-- Formular zur Dateneingabe -->
-    <form id="dataForm">
-      <label for="posInput">Position:</label>
-      <input type="text" id="posInput" name="posInput" required />
-      <label for="artikelnummerInput">Artikelnummer:</label>
-      <input type="text" id="artikelnummerInput" name="artikelnummerInput" required />
-      <label for="artikelbezeichnugInput">Artikelbezeichnung:</label>
-      <input type="text" id="artikelbezeichnugInput" name="artikelbezeichnugInput" required />
-      <label for="lagerInput">Lager:</label>
-      <input type="text" id="lagerInput" name="lagerInput" required />
-      <label for="lagerplatzInput">Lagerplatz:</label>
-      <input type="text" id="lagerplatzInput" name="lagerplatzInput" required />
-      <label for="lagerbestandInput">Lagerbestand:</label>
-      <input type="number" id="lagerbestandInput" name="lagerbestandInput" required />
-      <label for="warenentnahmeInput">Warenentnahme:</label>
-      <input type="number" id="warenentnahmeInput" name="warenentnahmeInput" required />
-      <label for="warehinzugefügtInput">Ware hinzugefügt:</label>
-      <input type="number" id="warehinzugefügtInput" name="warehinzugefügtInput" required />
-      <label for="einheitInput">Einheit:</label>
-      <input type="text" id="einheitInput" name="einheitInput" required />
-      <label for="preisproeinheitInput">Preis pro Einheit:</label>
-      <input type="number" id="preisproeinheitInput" name="preisproeinheitInput" required />
-      <label for="mindestmengeInput">Mindestmenge:</label>
-      <input type="number" id="mindestmengeInput" name="mindestmengeInput" required />
-      <label for="nachbestellenInput">Nachbestellen:</label>
-      <input type="number" id="nachbestellenInput" name="nachbestellenInput" required />
-      <label for="minbestellmengeInput">Mindestbestellmenge:</label>
-      <input type="number" id="minbestellmengeInput" name="minbestellmengeInput" required />
-      <label for="lieferantInput">Lieferant:</label>
-      <input type="text" id="lieferantInput" name="lieferantInput" required />
-      <label for="besttellmengeInput">Bestellmenge:</label>
-      <input type="number" id="besttellmengeInput" name="besttellmengeInput" required />
-      <label for="nachbestelltamInput">Nachbestellt am:</label>
-      <input type="date" id="nachbestelltamInput" name="nachbestelltamInput" required />
-      <label for="lieferzeitInput">Lieferzeit:</label>
-      <input type="text" id="lieferzeitInput" name="lieferzeitInput" required />
-      <label for="mitarbeiterInput">Mitarbeiter:</label>
-      <input type="text" id="mitarbeiterInput" name="mitarbeiterInput" required />
-      <label for="personalnummerInput">Personalnummer:</label>
-      <input type="text" id="personalnummerInput" name="personalnummerInput" required />
-      
-      <button type="button" id="addRowButton">Zeile hinzufügen</button>
-      <button type="button" id="backButton">Zurück</button>
-    </form>
+      <h2>Bestandstabelle</h2>
 
-    <h2>Bestandstabelle</h2>
-    <table id="dataTable">
-      <thead>
-        <tr>
-          <th>Position</th>
-          <th>Artikelnummer</th>
-          <th>Artikelbezeichnung</th>
-          <th>Lager</th>
-          <th>Lagerplatz</th>
-          <th>Lagerbestand</th>
-          <th>Warenentnahme</th>
-          <th>Ware hinzugefügt</th>
-          <th>Einheit</th>
-          <th>Preis pro Einheit</th>
-          <th>Wert Lager</th>
-          <th>Mindestmenge</th>
-          <th>Nachbestellen</th>
-          <th>Mindestbestellmenge</th>
-          <th>Lieferant</th>
-          <th>Bestellmenge</th>
-          <th>Nachbestellt am</th>
-          <th>Lieferzeit</th>
-          <th>Mitarbeiter</th>
-          <th>Personalnummer</th>
-        </tr>
-      </thead>
-      <tbody></tbody>
-    </table>
+      <!-- Formular zum Hinzufügen von Zeilen -->
+      <form id="dataForm">
+        <div class="form-group">
+          <label for="positionInput">Position:</label>
+          <input type="text" id="positionInput" name="positionInput" />
+        </div>
 
-    <button id="saveButton">Daten speichern</button>
+        <div class="form-group">
+          <label for="artikelnummerInput">Artikelnummer:</label>
+          <input type="text" id="artikelnummerInput" name="artikelnummerInput" />
+        </div>
 
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const form = document.getElementById("dataForm");
-        const tableBody = document.querySelector("#dataTable tbody");
-        const addRowButton = document.getElementById("addRowButton");
-        const saveButton = document.getElementById("saveButton");
-        const backButton = document.getElementById("backButton");
+        <div class="form-group">
+          <label for="artikelbezeichnungInput">Artikelbezeichnung:</label>
+          <input type="text" id="artikelbezeichnungInput" name="artikelbezeichnungInput" />
+        </div>
 
-        // Funktion für den "Zeile hinzufügen"-Button
-        addRowButton.addEventListener("click", () => {
-          const formData = new FormData(form);
-          const row = document.createElement("tr");
+        <div class="form-group">
+          <label for="lagerInput">Lager:</label>
+          <input type="text" id="lagerInput" name="lagerInput" />
+        </div>
 
-          // Formulardaten durchlaufen und in die Tabelle einfügen
-          formData.forEach((value, key) => {
-            const cell = document.createElement("td");
-            const input = document.createElement("input");
-            input.type = "text";
-            input.value = value;
-            cell.appendChild(input);
-            row.appendChild(cell);
-          });
+        <div class="form-group">
+          <label for="lagerplatzInput">Lagerplatz:</label>
+          <input type="text" id="lagerplatzInput" name="lagerplatzInput" />
+        </div>
 
-          // Berechne den Wert des Lagers
-          const lagerbestand = parseFloat(formData.get("lagerbestandInput"));
-          const preisProEinheit = parseFloat(formData.get("preisproeinheitInput"));
-          const wertLager = lagerbestand * preisProEinheit;
-          const lagerWertCell = document.createElement("td");
-          const lagerWertInput = document.createElement("input");
-          lagerWertInput.type = "text";
-          lagerWertInput.value = wertLager.toFixed(2);
-          lagerWertCell.appendChild(lagerWertInput);
-          row.appendChild(lagerWertCell);
+        <div class="form-group">
+          <label for="lagerbestandInput">Lagerbestand:</label>
+          <input type="number" id="lagerbestandInput" name="lagerbestandInput" />
+        </div>
 
-          // Löschen-Schaltfläche hinzufügen
-          const deleteCell = document.createElement("td");
-          const deleteButton = document.createElement("button");
-          deleteButton.textContent = "Löschen";
-          deleteButton.addEventListener("click", () => {
-            row.remove();
-            updateLocalStorage();  // Update LocalStorage nach dem Löschen einer Zeile
-          });
-          deleteCell.appendChild(deleteButton);
-          row.appendChild(deleteCell);
+        <div class="form-group">
+          <label for="warenentnahmeInput">Warenentnahme:</label>
+          <input type="number" id="warenentnahmeInput" name="warenentnahmeInput" />
+        </div>
 
-          tableBody.appendChild(row);
+        <div class="form-group">
+          <label for="warehinzuInput">Ware hinzugefügt:</label>
+          <input type="number" id="warehinzuInput" name="warehinzuInput" />
+        </div>
 
-          // Formular zurücksetzen
-          form.reset();
+        <div class="form-group">
+          <label for="einheitInput">Einheit:</label>
+          <input type="text" id="einheitInput" name="einheitInput" />
+        </div>
 
-          // Speichern der neuen Daten im LocalStorage
-          const savedData = loadTableDataFromStorage();
-          savedData.push(Object.fromEntries(formData));
-          localStorage.setItem("tableData", JSON.stringify(savedData));
-        });
+        <div class="form-group">
+          <label for="preisproeinheitInput">Preis pro Einheit:</label>
+          <input type="number" id="preisproeinheitInput" name="preisproeinheitInput" />
+        </div>
 
-        // Funktion für den Speichern-Button
-        saveButton.addEventListener("click", () => {
-          const rows = Array.from(tableBody.querySelectorAll("tr"));
-          const data = rows.map((row) => {
-            const cells = row.querySelectorAll("input");
-            return Array.from(cells).map((cell) => cell.value);
-          });
-          console.log("Gespeicherte Daten:", data);
-          alert("Daten wurden gespeichert! (siehe Konsole)");
-        });
+        <div class="form-group">
+          <label for="minmengeInput">Mindestmenge:</label>
+          <input type="number" id="minmengeInput" name="minmengeInput" />
+        </div>
 
-        // Funktion zum Laden von gespeicherten Daten aus dem LocalStorage
-        function loadTableDataFromStorage() {
-          const savedData = localStorage.getItem("tableData")
-            ? JSON.parse(localStorage.getItem("tableData"))
-            : [];
-          return savedData;
-        }
+        <div class="form-group">
+          <label for="nachbestellenInput">Nachbestellen:</label>
+          <input type="checkbox" id="nachbestellenInput" name="nachbestellenInput" />
+        </div>
 
+        <div class="form-group">
+          <label for="minbestellmengeInput">Mindestbestellmenge:</label>
+          <input type="number" id="minbestellmengeInput" name="minbestellmengeInput" />
+        </div>
 
-        
-        // Lade die Tabelle beim Laden der Seite
-        function loadTableData() {
-          const savedData = loadTableDataFromStorage();
+        <div class="form-group">
+          <label for="lieferantInput">Lieferant:</label>
+          <input type="text" id="lieferantInput" name="lieferantInput" />
+        </div>
 
-          savedData.forEach((formValues) => {
-            const row = document.createElement("tr");
+        <div class="form-group">
+          <label for="bestellmengeInput">Bestellmenge:</label>
+          <input type="number" id="bestellmengeInput" name="bestellmengeInput" />
+        </div>
 
-            Object.keys(formValues).forEach((key) => {
-              const cell = document.createElement("td");
-              const input = document.createElement("input");
-              input.type = "text";
-              input.value = formValues[key];
-              cell.appendChild(input);
-              row.appendChild(cell);
-            });
+        <div class="form-group">
+          <label for="nachbestelltAmInput">Nachbestellt am:</label>
+          <input type="date" id="nachbestelltAmInput" name="nachbestelltAmInput" />
+        </div>
 
-            const deleteCell = document.createElement("td");
-            const deleteButton = document.createElement("button");
-            deleteButton.textContent = "Löschen";
-            deleteButton.addEventListener("click", () => {
-              row.remove();
-              updateLocalStorage();  // Update LocalStorage nach dem Löschen einer Zeile
-            });
-            deleteCell.appendChild(deleteButton);
-            row.appendChild(deleteCell);
+        <div class="form-group">
+          <label for="lieferzeitInput">Lieferzeit:</label>
+          <input type="text" id="lieferzeitInput" name="lieferzeitInput" />
+        </div>
 
-            tableBody.appendChild(row);
-          });
-        }
+        <div class="form-group">
+          <label for="mitarbeiterInput">Mitarbeiter:</label>
+          <input type="text" id="mitarbeiterInput" name="mitarbeiterInput" />
+        </div>
 
-        // Lade die Tabelle nach der initialen Seite
-        loadTableData();
-      });
-    </script>
+        <div class="form-group">
+          <label for="personalnummerInput">Personalnummer:</label>
+          <input type="text" id="personalnummerInput" name="personalnummerInput" />
+        </div>
+      </form>
+
+      <!-- Tabelle für die Bestandsdaten -->
+      <table id="dataTable">
+        <thead>
+          <tr>
+            <th>Position</th>
+            <th>Artikelnummer</th>
+            <th>Artikelbezeichnung</th>
+            <th>Lager</th>
+            <th>Lagerplatz</th>
+            <th>Lagerbestand</th>
+            <th>Warenentnahme</th>
+            <th>Ware hinzugefügt</th>
+            <th>Einheit</th>
+            <th>Preis pro Einheit</th>
+            <th>Wert Lager</th>
+            <th>Mindestmenge</th>
+            <th>Nachbestellen</th>
+            <th>Mindestbestellmenge</th>
+            <th>Lieferant</th>
+            <th>Bestellmenge</th>
+            <th>Nachbestellt am</th>
+            <th>Lieferzeit</th>
+            <th>Mitarbeiter</th>
+            <th>Personalnummer</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+
+      <button id="saveButton">Daten speichern</button>
+      <button id="backButton">Zurück</button>
+    </div>
+
+    <script src="Lagerbestand.js"></script>
+   
   </body>
 </html>

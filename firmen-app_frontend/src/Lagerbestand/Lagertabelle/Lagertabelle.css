@@ -1,26 +1,22 @@
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f5f5f5;
-  color: #333;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  background-color:#f1e6b4 ;
+  color:#333;
   margin: 20px;
 }
 
+/* Basis-Styling für die Tabelle */
 table {
+  width: 100%; /* Weitere Verkleinerung der Breite der Tabelle */
   border-collapse: collapse;
-  width: 70%; /* Reduziert die Breite der Tabelle weiter */
-  margin-top: 20px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-table, th, td {
-  border: 1px solid #ddd;
+  margin-bottom: 20px;
+  font-size: 12px; /* Weitere Reduzierung der Schriftgröße */
 }
 
 th, td {
-  padding: 4px; /* Weitere Reduzierung des Zellabstands */
+  border: 1px solid #d5bfbf;
+  padding: 3px; /* Weitere Reduzierung des Innenabstands */
   text-align: left;
-  font-size: 11px; /* Noch kleinere Schriftgröße */
 }
 
 th {
@@ -28,63 +24,41 @@ th {
   font-weight: bold;
 }
 
-input[type="text"], 
-input[type="number"], 
-input[type="date"] {
-  padding: 5px; /* Weitere Reduzierung der Innenabstände */
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  width: 160px; /* Noch kleinere Eingabefelder */
-  margin-bottom: 6px;
-  margin-right: 8px;
-  box-sizing: border-box;
+.selected {
+  background-color: yellow;
 }
-
-button {
-  background-color: #007bff;
-  color: #fff;
-  padding: 6px 12px; /* Kleinere Schaltflächen */
+/* Button zum Löschen des Zellinhalts */
+.btn-delete {
+  margin-left: 10px;
+  background-color: #f44336;
+  color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 4px;
+  padding: 3px 8px;
   cursor: pointer;
-  margin: 6px 0;
   font-size: 12px;
 }
 
+.btn-delete:hover {
+  background-color: #e53935;
+}
+
+.btn-delete:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(244, 67, 54, 0.7);
+}
+
+button {
+  margin: 5px;
+  padding: 6px; /* Weitere Verkleinerung des Button-Paddings */
+  cursor: pointer;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 12px; /* Weitere Verkleinerung der Schriftgröße auf den Buttons */
+}
+
 button:hover {
-  background-color: #0056b3;
-}
-
-h1 {
-  color: #444;
-  margin-bottom: 20px;
-  text-align: center;
-}
-
-form {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  justify-content: center; /* Zentriert das Formular */
-}
-
-form label {
-  flex-basis: 100%;
-}
-
-form input {
-  flex-basis: 48%;
-}
-
-form button {
-  align-self: flex-start;
-}
-
-#dataTable {
-  margin-top: 30px;
-}
-
-#saveButton {
-  display: block;
-  margin: 20px auto;
+  background-color: #45a049;
 }

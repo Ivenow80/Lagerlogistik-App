@@ -143,7 +143,7 @@
           enteredPersonalnummer === storedPersonalnummer &&
           enteredPassword === storedPassword
         ) {
-          alert("Login erfolgreich! Willkommen zur Sicherheitsapp.");
+          alert("Login erfolgreich! Willkommen zur Lagerlogistik-App.");
           window.location.href = "../Lagerbestand.html"; // Weiterleitung zur Startseite
         } else {
           alert("Ungültige Anmeldedaten. Bitte versuchen Sie es erneut.");
@@ -152,7 +152,7 @@
 
       // Funktion zum Handhaben von "Passwort vergessen"
       function handleForgotPassword() {
-        alert("Bitte generieren Sie ein neues Passwort und erstellen Sie ein neues.");
+        alert("Bitte erstelle ein neues Passwort.");
         
         // Zeige das Formular zur Passwortgenerierung
         document.getElementById("password-reset-form").style.display = "block";
@@ -180,7 +180,7 @@
         localStorage.setItem("loginPassword", newPassword);
 
         alert("Ihr neues Passwort wurde erfolgreich erstellt!");
-        window.location.href = "../Lagerbestand.html"; // Weiterleitung nach erfolgreichem Reset
+        window.location.href = "../Lagertabelle.html"; // Weiterleitung nach erfolgreichem Reset
       }
     </script>
   </body>
