@@ -7,79 +7,104 @@
 
 /* Allgemeine Stile */
 body {
-  font-family: Arial, sans-serif;
-  margin: 20px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  margin: 0;
   padding: 0;
   background-color: #f1e6b4;
+  display: flex;
+  justify-content: center; /* Zentriert den Inhalt horizontal */
+  align-items: flex-start; /* Platziert den Inhalt oben auf der Seite */
+  min-height: 100vh;       /* Stellt sicher, dass der Inhalt den gesamten Bildschirm ausfüllt */
+  overflow-y: auto;        /* Ermöglicht vertikales Scrollen */
+  border: 15px solid #1e7289; /* Rand um die gesamte Seite */
+  padding: 20px; /* Abstand zum Rand für ein bisschen Freiraum */
+}
+
+.app-container {
+  display: flex;           /* Flexbox für das Layout */
+  flex-direction: row;     /* Stellt sicher, dass das Logo und das Formular nebeneinander sind */
+  align-items: flex-start; /* Das Logo und Formular werden am oberen Rand ausgerichtet */
+  justify-content: flex-start; /* Links ausrichten */
+  width: 100%;
+}
+
+.logo_aktuell {
+  flex: 0 0 auto;  /* Verhindert, dass das Logo skaliert oder den Rest des Containers ausfüllt */
+  margin-right: 20px;  /* Abstand zwischen Logo und Formular */
+}
+
+.logo_aktuell img {
+  width: 200px;  /* Reduziere die Breite des Logos für bessere Sichtbarkeit */
+  height: auto;  /* Höhe wird proportional zur Breite angepasst */
 }
 
 h1 {
   text-align: center;
-  font-size: 32px;
-  margin-bottom: 20px;
-  color: #333;
+  font-size: 30px;          /* Kleinere Schriftgröße */
+  margin-bottom: 10px;
+  color: #1e7289;
 }
 
 /* Formular-Stile */
 form {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 20px;
+  width: 100%;
+  max-width: 2500px;         /* Maximale Breite des Formulars */
+  padding: 10px;            /* Weniger Padding für ein kompakteres Design */
   background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 25px;      /* Etwas kleinere Ecken */
+  box-shadow: 0 4px 8px rgba(208, 36, 36, 0.1);
   display: grid;
-  gap: 15px;
+  gap: 10px;                /* Weniger Abstand zwischen den Feldern */
+  box-sizing: border-box;
 }
 
 label {
   font-weight: bold;
-  font-size: 16px;
+  font-size: 14px;          /* Kleinere Schriftgröße für Labels */
   color: #333;
   display: inline-block;
-  width: 150px;
-  margin-bottom: 10px;
+  width: 100%;
+  margin-bottom: 8px;       /* Kleineren Abstand nach unten */
 }
 
 input {
-  width: 100%;
-  padding: 12px;
-  font-size: 16px;
+  width: 50%;
+  padding: 10px;            /* Weniger Padding für Eingabefelder */
+  font-size: 14px;          /* Kleinere Schriftgröße für Eingabefelder */
   border: 1px solid #ccc;
   border-radius: 4px;
-  box-sizing: border-box;
-  margin-bottom: 10px;
+  margin-bottom: 8px;       /* Kleineren Abstand nach unten */
 }
 
 input:focus {
-  border-color: #4CAF50;
+  border-color: #1e7289;
   outline: none;
   box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
 }
 
 /* Dynamische Felder */
 #inputContainer {
-  margin-top: 20px;
-  border: 1px dashed #ccc;
-  padding: 10px;
+  margin-top: 15px;
+  border: 1px dashed #f1e6b4;
+  padding: 8px;             /* Weniger Padding für Container */
 }
 
 .entry {
-  margin-bottom: 10px;
+  margin-bottom: 8px;       /* Kleineren Abstand zwischen den dynamischen Feldern */
 }
 
 .entry label {
-  font-size: 16px;
+  font-size: 14px;          /* Kleinere Schriftgröße für Labels */
   color: #333;
 }
 
 .entry input {
-  width: 100%;
-  padding: 12px;
-  font-size: 16px;
+  width: 50%;
+  padding: 10px;            /* Weniger Padding für Eingabefelder */
+  font-size: 14px;          /* Kleinere Schriftgröße für Eingabefelder */
   border: 1px solid #ccc;
   border-radius: 4px;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
 .entry input:focus {
@@ -90,23 +115,24 @@ input:focus {
 
 /* Buttons */
 .buttons {
-  margin-top: 20px;
+  margin-top: 15px;         /* Weniger Abstand für Buttons */
   text-align: center;
 }
 
 button {
-  background-color: #4CAF50;
-  color: white;
-  padding: 12px 20px;
+  background-color: #1e7289;
+  color:antiquewhite;
+  padding: 10px 15px;       /* Weniger Padding für Buttons */
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 14px;          /* Kleinere Schriftgröße für Buttons */
   margin: 5px;
+  width: auto;
 }
 
 button:hover {
-  background-color: #45a049;
+  background-color: #f1e6b4;
 }
 
 button:focus {
@@ -116,17 +142,17 @@ button:focus {
 
 /* Logout-Button */
 .logout-button {
-  background-color: #f44336;
+  background-color: #c73228;
   color: white;
-  padding: 12px 20px;
+  padding: 10px 15px;       /* Weniger Padding für den Logout-Button */
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 14px;          /* Kleinere Schriftgröße für den Logout-Button */
   text-align: center;
-  margin-top: 20px;
+  margin-top: 15px;         /* Kleineren Abstand oben */
   display: block;
-  width: 200px;
+  width: 180px;             /* Kleinere Breite */
   margin-left: auto;
   margin-right: auto;
 }
@@ -152,12 +178,8 @@ button:focus {
     width: 100%;
   }
 
-  table, th, td {
-    font-size: 12px;
-  }
-
   label {
-    width: 100%;
+    width: 50%;
   }
 
   input {
