@@ -10,7 +10,7 @@
     <div class="app-container">
       <!-- Firmenlogo -->
       <div class="logo_aktuell">
-        <img src="../../Logo/logo_aktuell.png" alt="logo" />
+        <img src="../../Logo/logo_aktuell.png" alt="Firmenlogo" />
       </div>
 
       <h2>Bestandstabelle</h2>
@@ -19,171 +19,103 @@
       <form id="dataForm">
         <div class="form-group">
           <label for="positionInput">Position:</label>
-          <input type="text" id="positionInput" name="positionInput" />
+          <input type="text" id="positionInput" name="positionInput" required />
         </div>
-
-    <h2>Bestandstabelle</h2>
-    <table id="dataTable">
-      <thead>
-        <tr>
-          <th>Position</th>
-          <th>Artikelnummer</th>
-          <th>Artikelbezeichnung</th>
-          <th>Lager</th>
-          <th>Lagerplatz</th>
-          <th>Lagerbestand</th>
-          <th>Warenentnahme</th>
-          <th>Ware hinzugefügt</th>
-          <th>Einheit</th>
-          <th>Preis pro Einheit</th>
-          <th>Wert Lager</th>
-          <th>Mindestmenge</th>
-          <th>Nachbestellen</th>
-          <th>Mindestbestellmenge</th>
-          <th>Lieferant</th>
-          <th>Bestellmenge</th>
-          <th>Nachbestellt am</th>
-          <th>Lieferzeit</th>
-          <th>Mitarbeiter</th>
-          <th>Personalnummer</th>
-     
-        </tr>
-      </thead>
-      <tbody></tbody>
-    </table>
-
-
         <div class="form-group">
           <label for="artikelnummerInput">Artikelnummer:</label>
-          <input type="text" id="artikelnummerInput" name="artikelnummerInput" />
+          <input type="text" id="artikelnummerInput" name="artikelnummerInput" required />
         </div>
-
-
         <div class="form-group">
           <label for="artikelbezeichnungInput">Artikelbezeichnung:</label>
-          <input type="text" id="artikelbezeichnungInput" name="artikelbezeichnungInput" />
+          <input type="text" id="artikelbezeichnungInput" name="artikelbezeichnungInput" required />
         </div>
-
         <div class="form-group">
           <label for="lagerInput">Lager:</label>
-          <input type="text" id="lagerInput" name="lagerInput" />
+          <input type="text" id="lagerInput" name="lagerInput" required />
         </div>
-
         <div class="form-group">
           <label for="lagerplatzInput">Lagerplatz:</label>
-          <input type="text" id="lagerplatzInput" name="lagerplatzInput" />
+          <input type="text" id="lagerplatzInput" name="lagerplatzInput" required />
         </div>
-
         <div class="form-group">
           <label for="lagerbestandInput">Lagerbestand:</label>
-          <input type="number" id="lagerbestandInput" name="lagerbestandInput" />
+          <input type="number" id="lagerbestandInput" name="lagerbestandInput" required />
         </div>
-
         <div class="form-group">
-          <label for="warenentnahmeInput">Warenentnahme:</label>
-          <input type="number" id="warenentnahmeInput" name="warenentnahmeInput" />
+          <label for="warenEntnahmeInput">Waren-Entnahme:</label>
+          <input type="number" id="warenEntnahmeInput" name="warenEntnahmeInput" required />
         </div>
-
         <div class="form-group">
-          <label for="warehinzuInput">Ware hinzugefügt:</label>
-          <input type="number" id="warehinzuInput" name="warehinzuInput" />
+          <label for="wareHinzugefuegtInput">Ware hinzugefügt:</label>
+          <input type="number" id="wareHinzugefuegtInput" name="wareHinzugefuegtInput" required />
         </div>
-
         <div class="form-group">
           <label for="einheitInput">Einheit:</label>
-          <input type="text" id="einheitInput" name="einheitInput" />
+          <input type="text" id="einheitInput" name="einheitInput" required />
         </div>
-
         <div class="form-group">
-          <label for="preisproeinheitInput">Preis pro Einheit:</label>
-          <input type="number" id="preisproeinheitInput" name="preisproeinheitInput" />
+          <label for="preisProEinheitInput">Preis pro Einheit:</label>
+          <input type="number" id="preisProEinheitInput" name="preisProEinheitInput" step="0.01" required />
         </div>
-
         <div class="form-group">
-          <label for="minmengeInput">Mindestmenge:</label>
-          <input type="number" id="minmengeInput" name="minmengeInput" />
+          <label for="wertLagerbestandInput">Wert Lagerbestand:</label>
+          <input type="number" id="wertLagerbestandInput" name="wertLagerbestandInput" step="0.01" disabled />
         </div>
-
+        <div class="form-group">
+          <label for="mindestmengeInput">Mindestmenge:</label>
+          <input type="number" id="mindestmengeInput" name="mindestmengeInput" required />
+        </div>
         <div class="form-group">
           <label for="nachbestellenInput">Nachbestellen:</label>
           <input type="checkbox" id="nachbestellenInput" name="nachbestellenInput" />
         </div>
-
         <div class="form-group">
-          <label for="minbestellmengeInput">Mindestbestellmenge:</label>
-          <input type="number" id="minbestellmengeInput" name="minbestellmengeInput" />
+          <label for="minimaleBestellmengeInput">Minimale Bestellmenge:</label>
+          <input type="number" id="minimaleBestellmengeInput" name="minimaleBestellmengeInput" required />
         </div>
-
         <div class="form-group">
           <label for="lieferantInput">Lieferant:</label>
-          <input type="text" id="lieferantInput" name="lieferantInput" />
+          <input type="text" id="lieferantInput" name="lieferantInput" required />
         </div>
-
         <div class="form-group">
           <label for="bestellmengeInput">Bestellmenge:</label>
-          <input type="number" id="bestellmengeInput" name="bestellmengeInput" />
+          <input type="number" id="bestellmengeInput" name="bestellmengeInput" required />
         </div>
-
         <div class="form-group">
           <label for="nachbestelltAmInput">Nachbestellt am:</label>
           <input type="date" id="nachbestelltAmInput" name="nachbestelltAmInput" />
         </div>
-
         <div class="form-group">
           <label for="lieferzeitInput">Lieferzeit:</label>
-          <input type="text" id="lieferzeitInput" name="lieferzeitInput" />
+          <input type="number" id="lieferzeitInput" name="lieferzeitInput" required />
         </div>
-
         <div class="form-group">
           <label for="mitarbeiterInput">Mitarbeiter:</label>
-          <input type="text" id="mitarbeiterInput" name="mitarbeiterInput" />
+          <input type="text" id="mitarbeiterInput" name="mitarbeiterInput" required />
         </div>
-
         <div class="form-group">
           <label for="personalnummerInput">Personalnummer:</label>
-          <input type="text" id="personalnummerInput" name="personalnummerInput" />
+          <input type="text" id="personalnummerInput" name="personalnummerInput" required />
         </div>
+
+        <button type="submit">Hinzufügen</button>
       </form>
 
-      <!-- Tabelle für die Bestandsdaten -->
-      <table id="dataTable">
-        <thead>
-          <tr>
-            <th>Position</th>
-            <th>Artikelnummer</th>
-            <th>Artikelbezeichnung</th>
-            <th>Lager</th>
-            <th>Lagerplatz</th>
-            <th>Lagerbestand</th>
-            <th>Warenentnahme</th>
-            <th>Ware hinzugefügt</th>
-            <th>Einheit</th>
-            <th>Preis pro Einheit</th>
-            <th>Wert Lager</th>
-            <th>Mindestmenge</th>
-            <th>Nachbestellen</th>
-            <th>Mindestbestellmenge</th>
-            <th>Lieferant</th>
-            <th>Bestellmenge</th>
-            <th>Nachbestellt am</th>
-            <th>Lieferzeit</th>
-            <th>Mitarbeiter</th>
-            <th>Personalnummer</th>
-          </tr>
+     
         </thead>
-        <tbody></tbody>
+        <tbody>
+          <!-- Dynamische Zeilen werden hier eingefügt -->
+        </tbody>
       </table>
 
-      <button id="saveButton">Daten speichern</button>
-      <button id="backButton">Zurück</button>
+      <!-- Speicher- und Zurück-Buttons -->
+      <div class="button-group">
+        <button id="saveButton">Daten speichern</button>
+        <button id="backButton">Zurück</button>
+      </div>
     </div>
 
+    <!-- Verlinkung zur JavaScript-Datei -->
     <script src="Lagerbestand.js"></script>
-   
-
-    <!-- Verlinkung zur externen JavaScript-Datei -->
-    <script src="Lagerspeicher.js"></script>
-    <script src="Loginseite_Lager.js"></script>
-
   </body>
 </html>

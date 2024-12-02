@@ -1,154 +1,94 @@
-document.addEventListener("DOMContentLoaded", function () {
-  const form = document.getElementById("dataForm");
-  const saveButton = document.getElementById("saveButton");
-  const backButton = document.getElementById("backButton");
-  const tableBody = document.querySelector("#dataTable tbody");
+// Formular und Tabelle referenzieren
+const form = document.getElementById("dataForm");
+const tableBody = document.querySelector("#dataTable tbody");
+const saveButton = document.getElementById("saveButton");
 
-  // Funktion zum Hinzufügen einer Zeile
-  function addRow(formData) {
-    const row = document.createElement("tr");
+// Funktion zum Hinzufügen einer Zeile in die Tabelle
+function addRow(formData) {
+  const row = document.createElement("tr");
 
-    let formValues = {};
-    formData.forEach((value, key) => {
-      formValues[key] = value;
-      const cell = document.createElement("td");
-      const input = document.createElement("input");
-      input.type = "text";
-      input.value = value;
-      cell.appendChild(input);
-      row.appendChild(cell);
-    });
+  // Formularwerte in die Tabelle einfügen
+  const formValues = {};
+  formData.forEach((value, key) => {
+    formValues[key] = value;
 
-    // Berechne den Wert des Lagers
-    const wertLager =
-      parseFloat(formValues.preisproeinheitInput) *
-      parseInt(formValues.lagerbestandInput || 0);
-    const lagerWertCell = document.createElement("td");
-    const lagerWertInput = document.createElement("input");
-    lagerWertInput.type = "text";
-    lagerWertInput.value = wertLager.toFixed(2);
-    lagerWertCell.appendChild(lagerWertInput);
-    row.appendChild(lagerWertCell);
-
-    // Löschen-Schaltfläche hinzufügen
-    const deleteCell = document.createElement("td");
-    const deleteButton = document.createElement("button");
-    deleteButton.textContent = "Löschen";
-    deleteButton.style.backgroundColor = "#ff4d4d";
-    deleteButton.style.color = "#fff";
-    deleteButton.style.border = "none";
-    deleteButton.style.borderRadius = "5px";
-    deleteButton.style.cursor = "pointer";
-    deleteButton.style.padding = "5px 10px";
-    deleteButton.addEventListener("click", () => {
-      row.remove();
-      updateLocalStorage();  // Update LocalStorage nach dem Löschen einer Zeile
-    });
-    deleteCell.appendChild(deleteButton);
-    row.appendChild(deleteCell);
-
-    // Zeile zur Tabelle hinzufügen
-    tableBody.appendChild(row);
-
-    // Speichern der neuen Daten im LocalStorage
-    const savedData = loadTableDataFromStorage();
-    savedData.push(formValues);
-    localStorage.setItem("tableData", JSON.stringify(savedData));
-
-    // Formular zurücksetzen
-    form.reset();
+    const cell = document.createElement("td");
+    if (key === "nachbestellenInput") {
+      // Für Checkbox: Anzeige als Ja/Nein
+      cell.textContent = value === "on" ? "Ja" : "Nein";
+    } else {
+      cell.textContent = value;
+    }
+    row.appendChild(cell);
   });
 
-  // Funktion für den Speichern-Button
-  saveButton.addEventListener("click", () => {
-    const rows = Array.from(tableBody.querySelectorAll("tr"));
-    const data = rows.map((row) => {
-      const cells = row.querySelectorAll("input");
-      return Array.from(cells).map((cell) => cell.value);
+  // Berechnung des Lagerwerts (Preis pro Einheit * Lagerbestand)
+  const preis = parseFloat(formValues.preisProEinheitInput || 0);
+  const bestand = parseInt(formValues.lagerbestandInput || 0, 10);
+  const wertLager = (preis * bestand).toFixed(2);
+
+  const lagerWertCell = document.createElement("td");
+  lagerWertCell.textContent = wertLager;
+  row.appendChild(lagerWertCell);
+
+  // Zeile zur Tabelle hinzufügen
+  tableBody.appendChild(row);
+
+  // Alert nach erfolgreichem Hinzufügen der Zeile
+  alert("Neue Zeile erfolgreich hinzugefügt!");
+
+  // Formular zurücksetzen
+  form.reset();
+
+  // Speicher die Tabelle im LocalStorage
+  saveTableData();
+}
+
+// Eventlistener für das Formular
+form.addEventListener("submit", function(event) {
+  event.preventDefault(); // Verhindert das automatische Neuladen der Seite
+  const formData = new FormData(form);
+  addRow(formData);
+});
+
+// Funktion zum Speichern der Tabelle im LocalStorage
+function saveTableData() {
+  const tableRows = tableBody.querySelectorAll("tr");
+  const tableData = [];
+
+  tableRows.forEach(row => {
+    const rowData = [];
+    row.querySelectorAll("td").forEach(cell => {
+      rowData.push(cell.textContent);
     });
-    console.log("Gespeicherte Daten:", data);
-    alert("Daten wurden gespeichert! (siehe Konsole)");
+    tableData.push(rowData);
   });
-   // Funktion zum Laden von gespeicherten Daten aus dem LocalStorage
-   function loadTableDataFromStorage() {
-    const savedData = localStorage.getItem("tableData")
-      ? JSON.parse(localStorage.getItem("tableData"))
-      : [];
-    return savedData;
-  }
 
-  // Funktion zum Aktualisieren des LocalStorage nach jeder Änderung
-  function updateLocalStorage() {
-    const rows = Array.from(tableBody.querySelectorAll("tr"));
-    const data = rows.map((row) => {
-      const cells = row.querySelectorAll("input");
-      const rowData = {};
-      cells.forEach((cell, index) => {
-        rowData[`column${index}`] = cell.value;
-      });
-      return rowData;
-    });
-    localStorage.setItem("tableData", JSON.stringify(data));
-  }
+  // Speichert die Tabelle im LocalStorage
+  localStorage.setItem("tableData", JSON.stringify(tableData));
 
-  // Funktion zum Laden der gespeicherten Daten aus dem LocalStorage
-  function loadTableData() {
-    const savedData = JSON.parse(localStorage.getItem("tableData") || "[]");
-    savedData.forEach((rowData) => {
+  // Alert nach dem Speichern der Daten
+  alert("Daten wurden erfolgreich gespeichert!");
+}
+
+// Eventlistener für den Speichern-Button
+saveButton.addEventListener("click", function () {
+  saveTableData();
+});
+
+// Funktion zum Laden der Tabelle aus dem LocalStorage, wenn die Seite geladen wird
+window.addEventListener("load", function() {
+  const savedData = localStorage.getItem("tableData");
+  if (savedData) {
+    const tableData = JSON.parse(savedData);
+    tableData.forEach(rowData => {
       const row = document.createElement("tr");
-      rowData.forEach((cellData) => {
+      rowData.forEach(cellData => {
         const cell = document.createElement("td");
-        const input = document.createElement("input");
-        input.type = "text";
-        input.value = formValues[key];
-        input.disabled = true; // Eingabefeld für angezeigte Daten
-        cell.appendChild(input);
+        cell.textContent = cellData;
         row.appendChild(cell);
       });
-
-      // Löschen-Schaltfläche hinzufügen
-      const deleteCell = document.createElement("td");
-      const deleteButton = document.createElement("button");
-      deleteButton.textContent = "Löschen";
-      deleteButton.style.backgroundColor = "#ff4d4d";
-      deleteButton.style.color = "#fff";
-      deleteButton.style.border = "none";
-      deleteButton.style.borderRadius = "5px";
-      deleteButton.style.cursor = "pointer";
-      deleteButton.style.padding = "5px 10px";
-      deleteButton.addEventListener("click", () => {
-        row.remove();
-        updateLocalStorage();  // Update LocalStorage nach dem Löschen einer Zeile
-        alert("Zeile gelöscht");
-      });
-      deleteCell.appendChild(deleteButton);
-      row.appendChild(deleteCell);
-
       tableBody.appendChild(row);
     });
   }
-
-  // Funktion zur Aktualisierung des LocalStorage
-  function updateLocalStorage() {
-    const rows = Array.from(tableBody.querySelectorAll("tr"));
-    const data = rows.map((row) => {
-      const cells = row.querySelectorAll("input");
-      const rowData = {};
-      Array.from(cells).forEach((cell, index) => {
-        const input = cell.querySelector("input");
-        rowData[form.elements[index].name] = input.value;
-      });
-      return rowData;
-    });
-
-    localStorage.setItem("tableData", JSON.stringify(data));
-  }
-
-  // Lade die Tabelle beim Laden der Seite
-  loadTableData();
-
-  // Funktion für den "Zurück"-Button
-  backButton.addEventListener("click", () => {
-    alert("Einen Schritt zurück");
-  });
 });

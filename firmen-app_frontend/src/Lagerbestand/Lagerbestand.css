@@ -22,58 +22,48 @@ body {
 
 .app-container {
   display: flex;           /* Flexbox für das Layout */
-  flex-direction: row;     /* Stellt sicher, dass das Logo und das Formular nebeneinander sind */
+  flex-direction: column;  /* Stellt sicher, dass das Formular unter dem Logo ist */
   align-items: flex-start; /* Das Logo und Formular werden am oberen Rand ausgerichtet */
   justify-content: flex-start; /* Links ausrichten */
   width: 100%;
 }
 
 .logo_aktuell {
-  flex: 0 0 auto;  /* Verhindert, dass das Logo skaliert oder den Rest des Containers ausfüllt */
-  margin-right: 20px;  /* Abstand zwischen Logo und Formular */
+  margin-bottom: 20px;  /* Abstand zwischen Logo und Formular */
+  text-align: center;  /* Zentriert das Logo */
 }
 
 .logo_aktuell img {
-  width: 200px;  /* Reduziere die Breite des Logos für bessere Sichtbarkeit */
+  width: 150px;  /* Passt die Größe des Logos an */
   height: auto;  /* Höhe wird proportional zur Breite angepasst */
-}
-
-h1 {
-  text-align: center;
-  font-size: 30px;          /* Kleinere Schriftgröße */
-  margin-bottom: 10px;
-  color: #1e7289;
 }
 
 /* Formular-Stile */
 form {
   width: 100%;
-  max-width: 2500px;         /* Maximale Breite des Formulars */
-  padding: 10px;            /* Weniger Padding für ein kompakteres Design */
+  max-width: 1200px;         /* Maximale Breite des Formulars */
+  padding: 20px;            /* Weniger Padding für ein kompakteres Design */
   background-color: white;
-  border-radius: 25px;      /* Etwas kleinere Ecken */
+  border-radius: 15px;      /* Kleinere Ecken */
   box-shadow: 0 4px 8px rgba(208, 36, 36, 0.1);
   display: grid;
-  gap: 10px;                /* Weniger Abstand zwischen den Feldern */
-  box-sizing: border-box;
+  grid-template-columns: 1fr 1fr;  /* Zwei Spalten für die Felder */
+  gap: 15px;                /* Mehr Abstand zwischen den Feldern */
 }
 
 label {
   font-weight: bold;
   font-size: 14px;          /* Kleinere Schriftgröße für Labels */
   color: #333;
-  display: inline-block;
-  width: 100%;
-  margin-bottom: 8px;       /* Kleineren Abstand nach unten */
 }
 
 input {
-  width: 50%;
-  padding: 10px;            /* Weniger Padding für Eingabefelder */
+  width: 100%;              /* Füllt das Eingabefeld aus */
+  padding: 10px;
   font-size: 14px;          /* Kleinere Schriftgröße für Eingabefelder */
-  border: 1px solid #ccc;
+  border: 1px solid #1e7289;
   border-radius: 4px;
-  margin-bottom: 8px;       /* Kleineren Abstand nach unten */
+  margin-bottom: 10px;
 }
 
 input:focus {
@@ -82,57 +72,20 @@ input:focus {
   box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
 }
 
-/* Dynamische Felder */
-#inputContainer {
-  margin-top: 15px;
-  border: 1px dashed #f1e6b4;
-  padding: 8px;             /* Weniger Padding für Container */
-}
-
-.entry {
-  margin-bottom: 8px;       /* Kleineren Abstand zwischen den dynamischen Feldern */
-}
-
-.entry label {
-  font-size: 14px;          /* Kleinere Schriftgröße für Labels */
-  color: #333;
-}
-
-.entry input {
-  width: 50%;
-  padding: 10px;            /* Weniger Padding für Eingabefelder */
-  font-size: 14px;          /* Kleinere Schriftgröße für Eingabefelder */
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  margin-bottom: 8px;
-}
-
-.entry input:focus {
-  border-color: #4CAF50;
-  outline: none;
-  box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
-}
-
-/* Buttons */
-.buttons {
-  margin-top: 15px;         /* Weniger Abstand für Buttons */
-  text-align: center;
-}
-
 button {
   background-color: #1e7289;
-  color:antiquewhite;
-  padding: 10px 15px;       /* Weniger Padding für Buttons */
+  color: rgb(23, 22, 21);
+  padding: 12px 18px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  font-size: 14px;          /* Kleinere Schriftgröße für Buttons */
-  margin: 5px;
+  font-size: 14px;
+  margin: 10px 0;
   width: auto;
 }
 
 button:hover {
-  background-color: #f1e6b4;
+  background-color: #3bb5c2;
 }
 
 button:focus {
@@ -140,30 +93,22 @@ button:focus {
   box-shadow: 0 0 5px rgba(76, 175, 80, 0.7);
 }
 
-/* Logout-Button */
-.logout-button {
-  background-color: #c73228;
-  color: white;
-  padding: 10px 15px;       /* Weniger Padding für den Logout-Button */
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 14px;          /* Kleinere Schriftgröße für den Logout-Button */
-  text-align: center;
-  margin-top: 15px;         /* Kleineren Abstand oben */
-  display: block;
-  width: 180px;             /* Kleinere Breite */
-  margin-left: auto;
-  margin-right: auto;
+/* Speicher- und Zurück-Buttons */
+.button-group {
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+  margin-top: 20px;
 }
 
-.logout-button:hover {
-  background-color: #e53935;
+button#saveButton, button#backButton {
+  padding: 12px 18px;
+  background-color: #1e7289;
+  color: rgb(11, 11, 11);
 }
 
-.logout-button:focus {
-  outline: none;
-  box-shadow: 0 0 5px rgba(244, 67, 54, 0.7);
+button#saveButton:hover, button#backButton:hover {
+  background-color: #3bb5c2;
 }
 
 /* Medienabfragen für responsive Anpassung */
@@ -172,17 +117,37 @@ button:focus {
     padding: 10px;
   }
 
+  .app-container {
+    flex-direction: column; /* Ändert das Layout auf eine vertikale Anordnung */
+    align-items: center;
+  }
+
   form {
     padding: 15px;
     margin: 0;
     width: 100%;
   }
 
+  .logo_aktuell img {
+    width: 100px; /* Kleinere Logo-Größe für kleine Bildschirme */
+  }
+
   label {
-    width: 50%;
+    font-size: 12px;  /* Kleinere Schriftgröße für Labels auf kleinen Geräten */
   }
 
   input {
+    width: 100%; /* Eingabefelder passen sich an die Bildschirmgröße an */
+  }
+
+  button {
+    width: 100%; /* Buttons nehmen die volle Breite ein */
+    font-size: 16px; /* Größere Schriftgröße für bessere Lesbarkeit */
+    padding: 12px;   /* Mehr Abstand für bessere Benutzerfreundlichkeit */
+  }
+
+  .button-group {
+    flex-direction: column; /* Buttons untereinander */
     width: 100%;
   }
 }
