@@ -1,57 +1,76 @@
 <!DOCTYPE html>
 <html lang="de">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lagerdaten - Einzelne Zellinhalte Löschen</title>
-  <link rel="stylesheet" href="Lagerspeicher.css">
-</head>
-<body>
-  <div class="app-container">
-    <!-- Firmenlogo -->
-    <div class="logo_aktuell">
-      <img src="../../Logo/logo_aktuell.png" alt="Logo">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lagerdaten - Einzelne Zellinhalte Löschen</title>
+    <link rel="stylesheet" href="Lagerspeicher.css" />
+  </head>
+  <body>
+    <div class="app-container">
+      <!-- Firmenlogo -->
+      <div class="logo_aktuell">
+        <img src="../../Logo/logo_aktuell.png" alt="Logo" />
+      </div>
+
+      <h1>Gespeicherte Lagerdaten</h1>
+      <table id="lagerTable">
+        <thead>
+          <tr>
+            <th>Position</th>
+            <th>Artikelnummer</th>
+            <th>Artikel-Bezeichnung</th>
+            <th>Lager</th>
+            <th>Lagerplatz</th>
+            <th>Lagerbestand</th>
+            <th>Waren-Entnahme</th>
+            <th>Ware hinzugefügt</th>
+            <th>Einheit</th>
+            <th>Preis pro Einheit</th>
+            <th>Wert Lagerbestand</th>
+            <th>Mindestmenge</th>
+            <th>Nachbestellen</th>
+            <th>Minimale Bestellmenge</th>
+            <th>Lieferant</th>
+            <th>Bestellmenge</th>
+            <th>Nachbestellt am</th>
+            <th>Lieferzeit</th>
+            <th>Mitarbeiter</th>
+            <th>Personalnummer</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><input type="checkbox" class="select-row" /></td>
+            <td>Artikel 1</td>
+            <td>€10</td>
+            <td>
+              <button class="btn-delete" onclick="deleteRowDirectly(this)">
+                Löschen
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td><input type="checkbox" class="select-row" /></td>
+            <td>Artikel 2</td>
+            <td>€20</td>
+            <td>
+              <button class="btn-delete" onclick="deleteRowDirectly(this)">
+                Löschen
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="buttons">
+        <button onclick="goToLagerbestand()">Zurück</button>
+        <button id="deleteSelected" onclick="deleteSelectedRows()">Ausgewählte löschen</button>
+      </div>
     </div>
 
-    <h1>Gespeicherte Lagerdaten</h1>
-    <table id="lagerTable">
-      <thead>
-        <tr>
-          <th>Position</th>
-          <th>Artikelnummer</th>
-          <th>Artikel-Bezeichnung</th>
-          <th>Lager</th>
-          <th>Lagerplatz</th>
-          <th>Lagerbestand</th>
-          <th>Waren-Entnahme</th>
-          <th>Ware hinzugefügt</th>
-          <th>Einheit</th>
-          <th>Preis pro Einheit</th>
-          <th>Wert Lagerbestand</th>
-          <th>Mindestmenge</th>
-          <th>Nachbestellen</th>
-          <th>Minimale Bestellmenge</th>
-          <th>Lieferant</th>
-          <th>Bestellmenge</th>
-          <th>Nachbestellt am</th>
-          <th>Lieferzeit</th>
-          <th>Mitarbeiter</th>
-          <th>Personalnummer</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- Dynamische Daten werden hier geladen -->
-      </tbody>
-    </table>
-    <div class="buttons">
-      <button class="btn" onclick="zurück()">Zurück</button>
-      <button onclick="löschen()">Löschen</button>
-    </div>
-  </div>
-
-  <!-- JavaScript-Datei einbinden -->
-   <script src="Lagerspeicher.js"></script>
-  <script src="../Lagerbestand.js"></script>
-  <script src="../Loginseite_Lager/Loginstartseite.js"></script>
-</body>
+    <!-- JavaScript-Datei einbinden -->
+    <script src="Lagerspeicher.js"></script>
+    <script src="../Lagerbestand.js"></script>
+    <script src="../Loginseite_Lager/Loginstartseite.js"></script>
+  </body>
 </html>
